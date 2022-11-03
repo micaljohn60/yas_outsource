@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserAccessType;
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -57,6 +59,10 @@ class RegisterController extends Controller
             'type' => ['required', new Enum(UserType::class)],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'card_number' => 'required_if:access_type,==,PREMIUM',
+            'card_holder_name' => 'required_if:access_type,==,PREMIUM',
+            'expire_date' => 'required_if:access_type,==,PREMIUM',
+            'cvc' => 'required_if:access_type,==,PREMIUM',
         ]);
     }
 
@@ -64,19 +70,29 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return \App\Models\User
+     * @return User
      */
     protected function create(array $data): User
     {
 
         $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'type' => $data['type'],
+            'first_name' => $data['first_name'] ?? "test",
+            'last_name' => $data['last_name'] ?? "test",
+            'type' => $data['type'] ?? "buyer",
             'email' => $data['email'],
-            'access_type' => $data['access_type'],
+            'access_type' => $data['access_type'] ?? "PREMIUM",
             'password' => Hash::make($data['password']),
         ]);
+
+        if ($user->access_type->value === UserAccessType::PREMIUM->value) {
+            Payment::create([
+                'card_number' => $data['card_number'],
+                'card_holder_name' => $data['card_holder_name'],
+                'expire_date' => $data['expire_date'],
+                'cvc' => $data['cvc'],
+                'user_id' => $user->id,
+            ]);
+        }
 
         return $user;
     }

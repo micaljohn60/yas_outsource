@@ -49,4 +49,9 @@ class User extends Authenticatable
         'type' => UserType::class,
         'access_type' => UserAccessType::class,
     ];
+
+    public function rules(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Payment::class);
+    }
 }
