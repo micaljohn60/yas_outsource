@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('bizs')->group(function () {
+    Route::post('/create', [BizController::class, 'store'])->name('biz.store');
+    Route::get('/', [BizController::class, 'index'])->name('biz.index');
+});
+
