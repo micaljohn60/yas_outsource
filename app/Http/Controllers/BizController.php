@@ -24,4 +24,9 @@ class BizController extends Controller
         (new Biz())->createBiz($request);
         return "success";
     }
+
+    public function create()
+    {
+        return view('biz.create');
+    }
 }

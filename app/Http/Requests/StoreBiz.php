@@ -13,7 +13,7 @@ class StoreBiz extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,12 +25,12 @@ class StoreBiz extends FormRequest
     {
         return [
             'name' => ['required'],
-            'phone' => ['required'],
-            'register_number' => ['required'],
-            'country' => ['required'],
-            'address' => ['required'],
-            'reason_sale' => ['required'],
-            'biz_detail' => ['required'],
+            // 'phone' => ['required'],
+            // 'register_number' => ['required'],
+            // 'country' => ['required'],
+            // 'address' => ['required'],
+            // 'reason_sale' => ['required'],
+            // 'biz_detail' => ['required'],
         ];
     }
 }

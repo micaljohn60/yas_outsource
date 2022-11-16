@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('bizs')->group(function () {
+    Route::get('/create', [BizController::class, 'create'])->name('biz.create');
     Route::post('/create', [BizController::class, 'store'])->name('biz.store');
     Route::get('/', [BizController::class, 'index'])->name('biz.index');
 });
