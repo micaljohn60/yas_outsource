@@ -15,6 +15,7 @@ class Payment extends Model
         'card_holder_name',
         'expire_date',
         'cvc',
+        'user_id'
     ];
 
 }

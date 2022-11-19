@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'card_number' => 'required_if:access_type,==,PREMIUM',
             'card_holder_name' => 'required_if:access_type,==,PREMIUM',
-            'expire_date' => 'required_if:access_type,==,PREMIUM',
+            // 'expire_date' => 'required_if:access_type,==,PREMIUM',
             'cvc' => 'required_if:access_type,==,PREMIUM',
         ]);
     }
@@ -84,7 +84,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if ($user->access_type->value === UserAccessType::PREMIUM->value) {
+      
+
+        if ($user->access_type->value == UserAccessType::PREMIUM->value) {
             Payment::create([
                 'card_number' => $data['card_number'],
                 'card_holder_name' => $data['card_holder_name'],
