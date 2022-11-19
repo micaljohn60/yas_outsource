@@ -19,7 +19,12 @@
 
                 <div class="row mt-3 custom-input">
                     <div class="col-lg-6">
-                        <input type="hidden" name="status" value="onsale" />
+                        {{-- <input type="hidden" name="status" value="onsale" /> --}}
+                        {{-- @error('status')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror --}}
                         <input class="" type="text" placeholder="Company Name*" name="name">
                     </div>
                     <div class="col-lg-6">
