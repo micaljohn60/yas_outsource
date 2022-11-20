@@ -22,13 +22,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('bizs')->group(function () {
+
+Route::group(['middleware' => 'seller','prefix' => 'bizs'] , function () {
     Route::get('/create', [BizController::class, 'create'])->name('biz.create');
     Route::post('/create', [BizController::class, 'store'])->name('biz.store');
     Route::get('/', [BizController::class, 'index'])->name('biz.index');
 });
 
-Route::prefix('proposals')->group(function () {
+Route::group(['middleware' => 'buyer','prefix' => 'proposals'] , function () {
     Route::post('/create', [\App\Http\Controllers\ProposalController::class, 'store'])->name('proposal.store');
     Route::get('/', [\App\Http\Controllers\ProposalController::class, 'index'])->name('proposal.index');
     Route::get('/{proposal}', [\App\Http\Controllers\ProposalController::class, 'show'])->name('proposal.show');
