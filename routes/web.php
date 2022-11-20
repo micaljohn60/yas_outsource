@@ -28,3 +28,9 @@ Route::prefix('bizs')->group(function () {
     Route::get('/', [BizController::class, 'index'])->name('biz.index');
 });
 
+Route::prefix('proposals')->group(function () {
+    Route::post('/create', [\App\Http\Controllers\ProposalController::class, 'store'])->name('proposal.store');
+    Route::get('/', [\App\Http\Controllers\ProposalController::class, 'index'])->name('proposal.index');
+    Route::get('/{proposal}', [\App\Http\Controllers\ProposalController::class, 'show'])->name('proposal.show');
+});
+
