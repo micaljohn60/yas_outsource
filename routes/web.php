@@ -29,10 +29,17 @@ Route::group(['middleware' => 'seller','prefix' => 'bizs'] , function () {
     Route::get('/', [BizController::class, 'index'])->name('biz.index');
 });
 
-Route::group(['middleware' => 'buyer','prefix' => 'proposals'] , function () {
-    Route::post('/create', [\App\Http\Controllers\ProposalController::class, 'store'])->name('proposal.store');
-    Route::get('/', [\App\Http\Controllers\ProposalController::class, 'index'])->name('proposal.index');
-    Route::get('/{proposal}', [\App\Http\Controllers\ProposalController::class, 'show'])->name('proposal.show');
+Route::group(['middleware' => 'buyer'] , function () {
+
+    Route::group(['prefix' => 'proposals'] , function () {
+        Route::post('/create', [\App\Http\Controllers\ProposalController::class, 'store'])->name('proposal.store');
+        Route::get('/', [\App\Http\Controllers\ProposalController::class, 'index'])->name('proposal.index');
+        Route::get('/{proposal}', [\App\Http\Controllers\ProposalController::class, 'show'])->name('proposal.show');
+
+        Route::post('/upload-to-biz', [\App\Http\Controllers\ProposalController::class, 'uploadProposalToBiz'])->name('proposal.biz.upload');
+    });
+
+
 });
 
 
