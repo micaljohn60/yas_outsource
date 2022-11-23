@@ -8,6 +8,11 @@ body {
     background: #fafafa;
 }
 
+#editor-container {
+    height: 375px;
+  }
+  
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;

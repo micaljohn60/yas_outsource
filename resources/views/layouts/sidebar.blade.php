@@ -10,9 +10,19 @@
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('css/side_bar_style.css') }}" rel="stylesheet">
+  
+
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
+        
 </head>
 
 <body>
@@ -28,9 +38,21 @@
                 <li class="active">
                     <a href="#homeSubmenu" aria-expanded="false" class="dropdown-toggle"> <i class="fa-solid fa-chart-line mr-5 ml-5"></i>Dashboard</a>
                 </li>
+
+                
+
+                @if (Auth::user()->type->value == 'buyer' )
                 <li>
-                    <a href="#"><i class="fa-solid fa-plus mr-3"></i> Create Biz</a>
+                    <a href="{{route("proposal.create")}}"><i class="fa-solid fa-plus mr-3"></i> Create Proposal</a>
                 </li>
+                @elseif(Auth::user()->type->value == 'seller')
+                <li>
+                    <a href="{{route('biz.create')}}"><i class="fa-solid fa-plus mr-3"></i> Create Biz</a>
+                </li>
+                @endif
+                {{-- <li>
+                    <a href="#"><i class="fa-solid fa-plus mr-3"></i> Create Biz</a>
+                </li> --}}
                 <li>
                     <a href="#"><i class="fa-regular fa-bell mr-3"></i> Notifications</a>
                 </li>
@@ -62,7 +84,7 @@
                                 <a class="nav-link" href="#">Language</a>
                             </li>
                             <li class="nav-item">
-                                {{-- <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a> --}}
+                                <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
                             </li>
                         </ul>
                     </div>
@@ -77,8 +99,39 @@
       <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
+      
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    {{-- <script>
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block', 'image'],
+            
 
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['clean']                                         // remove formatting button
+            ];
+        var editor = new Quill('#editor', {
+          modules: { toolbar: toolbarOptions },
+          theme: 'snow',
+        });
+        var delta = editor.getContents();
+        console.log(delta)
+      </script> --}}
         <script>
+            
             $(document).ready(function () {
                 $('#datepicker').datepicker();
                 $('#example').DataTable();
