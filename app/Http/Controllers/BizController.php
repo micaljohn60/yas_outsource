@@ -29,4 +29,20 @@ class BizController extends Controller
     {
         return view('biz.create');
     }
+
+    public function show(Biz $biz)
+    {
+        $proposals = null;
+
+        if(auth()->check() && auth()->user()->type->value === 'buyer')
+        {
+            $proposals = auth()->user()->proposals;
+        }
+
+        $view = ''; // need to add FE
+
+        return view($view,compact('biz','proposals'));
+    }
 }
+
+
