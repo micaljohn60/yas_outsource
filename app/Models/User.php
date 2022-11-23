@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Payment::class);
     }
+
+    public function proposals(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Proposal::class);
+    }
 }

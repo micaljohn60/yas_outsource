@@ -36,3 +36,5 @@ Route::group(['middleware' => 'buyer','prefix' => 'proposals'] , function () {
     Route::get('/{proposal}', [\App\Http\Controllers\ProposalController::class, 'show'])->name('proposal.show');
 });
 
+
+Route::get('/bizs/{biz}', [\App\Http\Controllers\BizController::class, 'show'])->name('biz.show');
