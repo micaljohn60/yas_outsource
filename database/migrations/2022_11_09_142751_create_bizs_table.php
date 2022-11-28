@@ -15,7 +15,7 @@ class CreateBizsTable extends Migration
     {
         Schema::create('bizs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('status')->default('draft');
             $table->string('phone');

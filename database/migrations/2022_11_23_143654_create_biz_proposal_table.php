@@ -15,10 +15,10 @@ class CreateBizProposalTable extends Migration
     {
         Schema::create('biz_proposal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("biz_id")->constrained()->onDelete('cascade');
-            $table->foreignId("proposal_id")->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId("proposal_upload_user_id")->nullable()->constrained("users")->onDelete('cascade');
-            $table->text("proposal_file_path")->nullable();
+            $table->foreignId('biz_id')->constrained()->onDelete('cascade');
+            $table->foreignId('proposal_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('proposal_upload_user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->text('proposal_file_path')->nullable();
             $table->timestamps();
         });
     }
