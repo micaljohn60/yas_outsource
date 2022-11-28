@@ -39,7 +39,7 @@ class BizController extends Controller
             $proposals = auth()->user()->proposals;
         }
 
-        $view = ''; // need to add FE
+        $view = 'biz.show'; // need to add FE
 
         return view($view,compact('biz','proposals'));
     }
