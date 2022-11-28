@@ -9,13 +9,13 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $table = "payments";
+    protected $table = 'payments';
+
     protected $fillable = [
         'card_number',
         'card_holder_name',
         'expire_date',
         'cvc',
-        'user_id'
+        'user_id',
     ];
-
 }

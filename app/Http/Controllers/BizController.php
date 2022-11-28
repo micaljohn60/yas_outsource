@@ -7,7 +7,6 @@ use App\Models\Biz;
 
 class BizController extends Controller
 {
-
     /**
      * Show the application dashboard.
      *
@@ -21,7 +20,8 @@ class BizController extends Controller
     public function store(StoreBiz $request)
     {
         (new Biz())->createBiz($request);
-        return "success";
+
+        return 'success';
     }
 
     public function create()
@@ -52,5 +52,3 @@ class BizController extends Controller
         return Biz::orderBy('desc', 'created_at')->get();
     }
 }
-
-

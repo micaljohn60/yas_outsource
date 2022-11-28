@@ -9,9 +9,10 @@ class Biz extends Model
 {
     use HasFactory;
 
-    protected $table = "bizs";
+    protected $table = 'bizs';
+
     protected $fillable = [
-        "user_id",
+        'user_id',
         'name',
         'status',
         'phone',
@@ -27,7 +28,7 @@ class Biz extends Model
     public function createBiz($request)
     {
         return static::Create([
-            "user_id" => auth()->user()->id,
+            'user_id' => auth()->user()->id,
             'name' => $request->name,
             'status' => $request->status,
             'phone' => $request->phone,

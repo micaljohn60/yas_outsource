@@ -16,10 +16,8 @@ class SellerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check())
-        {
-            if (auth()->user()->type->value !== 'seller')
-            {
+        if (auth()->check()) {
+            if (auth()->user()->type->value !== 'seller') {
                 abort(403);
             }
         }

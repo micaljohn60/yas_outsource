@@ -13,14 +13,14 @@ class ProposalController extends Controller
 {
     public function store(ProposalStoreRequest $request)
     {
-        app(Proposal::class)->createProposal($request->get('title'),$request->get('description'));
+        app(Proposal::class)->createProposal($request->get('title'), $request->get('description'));
 
         return true; //! frontend need to replace with your return route
     }
 
     public function index()
     {
-        $proposals = Proposal::select('title','description','created_at')->latest()->get();
+        $proposals = Proposal::select('title', 'description', 'created_at')->latest()->get();
 
         return $proposals; //! frontend need to replace with return view('..',compact('proposals'));
     }
@@ -39,7 +39,7 @@ class ProposalController extends Controller
 
             BizProposal::create([
                 'biz_id' => $biz->id,
-                'proposal_id' => $proposal->id
+                'proposal_id' => $proposal->id,
             ]);
         }
 
@@ -50,14 +50,14 @@ class ProposalController extends Controller
 
             $buyerId = auth()->user()->id;
 
-            $path = "biz_proposals/".$biz->id."_buyer_".$buyerId."/".$originalName;
+            $path = 'biz_proposals/'.$biz->id.'_buyer_'.$buyerId.'/'.$originalName;
 
             Storage::put($path, file_get_contents($file));
 
             BizProposal::create([
                 'biz_id' => $biz->id,
                 'proposal_upload_user_id' => $buyerId,
-                'proposal_file_path' => $path
+                'proposal_file_path' => $path,
             ]);
         }
 
