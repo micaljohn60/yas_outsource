@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
-use Illuminate\Contracts\Support\Renderable;
 
 class BizController extends Controller
 {
@@ -34,14 +33,23 @@ class BizController extends Controller
     {
         $proposals = null;
 
-        if(auth()->check() && auth()->user()->type->value === 'buyer')
-        {
+        if (auth()->check() && auth()->user()->type->value === 'buyer') {
             $proposals = auth()->user()->proposals;
         }
 
         $view = ''; // need to add FE
 
-        return view($view,compact('biz','proposals'));
+        return view($view, compact('biz', 'proposals'));
+    }
+
+    public function getBizByUser()
+    {
+        return Biz::where('user_id', auth()->user()->id)->get();
+    }
+
+    public function getLatest()
+    {
+        return Biz::orderBy('desc', 'created_at')->get();
     }
 }
 
