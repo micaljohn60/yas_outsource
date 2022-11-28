@@ -49,6 +49,6 @@ class BizController extends Controller
 
     public function getLatest()
     {
-        return Biz::orderBy('desc', 'created_at')->get();
+        return Biz::orderBy('desc', 'created_at')->limit(7)->get();
     }
 }
