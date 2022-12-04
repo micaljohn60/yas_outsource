@@ -31,6 +31,7 @@ Route::group(['middleware' => 'seller', 'prefix' => 'bizs'], function () {
 
 Route::group(['middleware' => 'buyer'], function () {
     Route::group(['prefix' => 'proposals'], function () {
+        Route::get('/create', [ProposalController::class, 'create'])->name('proposal.create');
         Route::post('/create', [ProposalController::class, 'store'])->name('proposal.store');
         Route::get('/', [ProposalController::class, 'index'])->name('proposal.index');
         Route::get('/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
