@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BizController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,3 +44,4 @@ Route::group(['middleware' => 'buyer'], function () {
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
 Route::get('/bizs-by-user', [BizController::class, 'getBizByUser']); // get biz lists by users
 Route::get('/latest-bizs', [BizController::class, 'getLatest']); // get latest biz lists
+Route::get('/notifications', [NotificationController::class, 'index']); // get notification list
