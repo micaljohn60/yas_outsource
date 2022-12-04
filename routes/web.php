@@ -23,13 +23,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'seller', 'prefix' => 'bizs'], function () {
-    Route::get('/create', [BizController::class, 'create'])->name('biz.create');
-    Route::post('/create', [BizController::class, 'store'])->name('biz.store');
-    Route::get('/', [BizController::class, 'index'])->name('biz.index');
+Route::group(['middleware' => 'seller'], function () {
+
+    Route::group(['prefix' => 'seller'], function () {
+        Route::get('/dashboard', [\App\Http\Controllers\SellerController::class, 'dashboard'])->name('seller.dashboard');
+    });
+
+    Route::group(['prefix' => 'bizs'], function () {
+        Route::get('/create', [BizController::class, 'create'])->name('biz.create');
+        Route::post('/create', [BizController::class, 'store'])->name('biz.store');
+        Route::get('/', [BizController::class, 'index'])->name('biz.index');
+    });
 });
 
 Route::group(['middleware' => 'buyer'], function () {
+
+    Route::group(['prefix' => 'buyer'], function () {
+        Route::get('/dashboard', [\App\Http\Controllers\BuyerController::class, 'dashboard'])->name('buyer.dashboard');
+    });
+
     Route::group(['prefix' => 'proposals'], function () {
         Route::get('/create', [ProposalController::class, 'create'])->name('proposal.create');
         Route::post('/create', [ProposalController::class, 'store'])->name('proposal.store');

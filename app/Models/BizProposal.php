@@ -14,4 +14,14 @@ class BizProposal extends Model
         'proposal_upload_user_id',
         'proposal_file_path',
     ];
+
+    public function biz()
+    {
+        return $this->belongsTo(Biz::class);
+    }
+
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class);
+    }
 }

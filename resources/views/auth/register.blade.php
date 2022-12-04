@@ -26,7 +26,7 @@
 
 <body>
     @php
-    $isFreeUser = false;
+    $isFreeUser = true;
     @endphp
 
     <form method="POST" action="{{ route('register') }}">
@@ -41,14 +41,14 @@
                         <h3><strong>Create New Account </strong></h3>
                         <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
                         </p>
-                        
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group last mb-3">
                                         <label for="firstName">Frist Name</label>
                                         <input type="text" class="form-control @error('first_name') is-invalid @enderror"
                                             name="first_name" required autocomplete="type" placeholder="First name"
-                                            value="{{ old('first_name') }}" 
+                                            value="{{ old('first_name') }}"
                                             id="firstName">
                                         @error('first_name')
                                             <span class="invalid-feedback" role="alert">
@@ -94,7 +94,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
 
                             <div class="form-group last mb-3">
                                 <label for="password">{{ __('Re-Type Password') }}</label>
@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="form-group last mb-3">
-                                <select class="form-select" aria-label="Default select example" name="type">                                    
+                                <select class="form-select" aria-label="Default select example" name="type">
                                     <option value="buyer">Buyer</option>
                                     <option value="seller">Seller</option>
                                     <option value="expert">Expert</option>
@@ -114,7 +114,7 @@
                                 <input type="hidden" name="access_type" @if($isFreeUser) value="FREE" @else value="PREMIUM" @endif>
                             </div>
 
-                            
+
 
                             <div class="d-flex mb-5 align-items-center">
                                 <label class="control control--checkbox mb-0" for="remember"><span class="caption">
@@ -139,20 +139,20 @@
                                 {{ __('Register') }}
                             </button>
 
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div @if($isFreeUser) class="d-none" @else class="bg order-1 order-md-2 d-flex justify-centent-center align-items-center" @endif>
-        
+
             <div class="creditCardForm">
                 <div class="heading">
                     <h1>Payment Information</h1>
                 </div>
                 <div class="payment">
-                    
+
                         <div class="form-group owner">
                             <label for="owner">Card Holder Name</label>
                             <input type="text" class="form-control" name="card_holder_name" id="card_holder_name">
@@ -177,13 +177,13 @@
                         <div class="form-group" id="pay-now">
                             <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
                         </div>
-                    
+
                 </div>
             </div>
         </div>
-        
 
-        
+
+
     </div>
 </form>
 
