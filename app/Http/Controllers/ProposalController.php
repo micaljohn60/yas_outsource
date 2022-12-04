@@ -15,7 +15,7 @@ class ProposalController extends Controller
     {
         app(Proposal::class)->createProposal($request->get('title'), $request->get('description'));
 
-        return view('proposal.list'); //! frontend need to replace with your return route
+        return redirect()->route('proposal.index'); //! frontend need to replace with your return route
     }
 
     public function create()
@@ -25,7 +25,7 @@ class ProposalController extends Controller
 
     public function index()
     {
-        $proposals = Proposal::select('title', 'description', 'created_at')->latest()->get();
+        $proposals = Proposal::select('id','title', 'description', 'created_at')->latest()->get();
         return view('proposal.list',compact('proposals')); //! frontend need to replace with return view('..',compact('proposals'));
     }
 
