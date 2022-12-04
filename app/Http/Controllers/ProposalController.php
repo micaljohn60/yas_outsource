@@ -20,13 +20,8 @@ class ProposalController extends Controller
 
     public function create()
     {
-<<<<<<< HEAD
-        return view('proposal.create');
-    }
-=======
         $proposals = Proposal::select('title', 'description', 'created_at')->latest()->get();
->>>>>>> cad94d32487a68af826e93399f17f052b93c831f
-
+    }
     public function index()
     {
         $proposals = Proposal::select('id','title','description','created_at')->latest()->get();
