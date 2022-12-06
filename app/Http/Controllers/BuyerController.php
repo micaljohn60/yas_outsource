@@ -17,9 +17,10 @@ class BuyerController extends Controller
         $myBizProposals = BizProposal::with(['biz','proposal'])
                                     ->whereIn('proposal_id',$myProposals->pluck('id')->toArray())
                                     ->orWhere('proposal_upload_user_id',auth()->user()->id)
-                                    ->latest()->paginate(15);
+                                    ->latest()->get();
 
         // please replace with your Frontend redirect link or view link by compact of myProposals and myBizProposals
-        return response()->json(['myAllProposals' => $myProposals,'myProposalToBiz' => $myBizProposals]);
+        return view('buyer.dashboard',compact('myBizProposals'));
+        // return response()->json(['myAllProposals' => $myProposals,'myProposalToBiz' => $myBizProposals]);
     }
 }

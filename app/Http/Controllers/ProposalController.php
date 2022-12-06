@@ -71,6 +71,7 @@ class ProposalController extends Controller
             Notification::send(Auth::user(), new SendProposalNotification($proposal));
         }
 
-        return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
+        // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
+        return redirect()->back()->with('message', 'Proposal Sent Successfully');
     }
 }

@@ -5,16 +5,16 @@
     <div class="container-fluid">
         <form method="POST" action="{{ route('proposal.store') }}">
             @csrf
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-3">
                 <h3>Edit Proposal - {{$proposal->title}}</h3>
-                <input type="submit" value="Create +" class="btn btn-primary"/>
+                <input type="submit" value="Create +" class="btn primary-btn"/>
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" id="proposalName" placeholder="Enter Proposal Name" name="title" value={{$proposal->title}}>
+                <input type="text" class="form-control" id="proposalName" placeholder="Enter Proposal Name" name="title" value="{{$proposal->title}}">
                 
             </div>
-            <div id="toolbar">
+            <div id="toolbar" class="mt-3">
                 {{-- <button class="ql-bold">Bold</button>
                 <button class="ql-italic">Italic</button> --}}
               </div>
@@ -31,7 +31,7 @@
         </form>
     </div>
 
-    <button id="click">Click Me</button>
+   
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>

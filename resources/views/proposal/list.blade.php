@@ -10,15 +10,16 @@
         @foreach ($proposals as $key => $proposal)
         <div class="col-lg-2">
         <a href="{{route('proposal.show',$proposal->id)}}">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 15rem;">
                 <div class="card-body">
-                  <h5 class="card-title">{{$proposal->title}}</h5>
-                  <h6 id="description" class="card-subtitle mb-2 text-muted d-inline-block text-truncate" style="max-width: 15rem;">
-                    {!! $proposal->description !!}
-                  </h6>
-                  <div class="d-flex justify-content-end">
-                    <p><small id="time">{{$proposal->created_at}}</small></p>
-                  </div>
+                  <h5 class="card-title d-inline-block text-truncate" style="max-width: 10rem;">{{$proposal->title}}</h5>
+                  {{-- <h6 id="description" class="card-subtitle mb-2 text-muted d-inline-block text-truncate" style="max-width: 10rem;">
+                    {!! Str::limit($proposal->description, 10)  !!}
+                  </h6> --}}
+                  
+                </div>
+                <div class="d-flex justify-content-end pe-3">
+                  <p><small id="time">{{$proposal->created_at}}</small></p>
                 </div>
             </div>
         </a>

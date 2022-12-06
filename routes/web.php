@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[BizController::class, 'getLatest']);
 
 Auth::routes();
 
@@ -56,4 +54,4 @@ Route::group(['middleware' => 'buyer'], function () {
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
 Route::get('/bizs-by-user', [BizController::class, 'getBizByUser']); // get biz lists by users
 Route::get('/latest-bizs', [BizController::class, 'getLatest']); // get latest biz lists
-Route::get('/notifications', [NotificationController::class, 'index']); // get notification list
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index'); // get notification list

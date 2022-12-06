@@ -7,6 +7,15 @@
     --list-sub-heading-mobile : 15px;
     --border-color: #05C19C;
 }
+.primary-bg{
+    background-color: #05C19C;
+}
+
+.primary-btn{
+    color: #fff;
+    background-color: #05C19C;
+}
+
 .body-container{    
     width: 100%;
     height: 250px;     

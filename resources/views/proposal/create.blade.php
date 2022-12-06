@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="proposalName" placeholder="Enter Proposal Name" name="title">
                 
             </div>
-            <div id="toolbar">
+            <div id="toolbar" class="mt-3">
                 {{-- <button class="ql-bold">Bold</button>
                 <button class="ql-italic">Italic</button> --}}
               </div>
@@ -31,7 +31,7 @@
         </form>
     </div>
 
-    <button id="click">Click Me</button>
+    {{-- <button id="click">Click Me</button> --}}
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
