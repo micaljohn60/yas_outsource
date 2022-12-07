@@ -45,13 +45,14 @@ class BizController extends Controller
     public function getBizByUser()
     {
         $bizs = Biz::where('user_id', auth()->user()->id)->get();
-        return view('home',compact('bizs'));
-        
+
+        return view('home', compact('bizs'));
     }
 
     public function getLatest()
     {
-        $bizs = Biz::orderBy('created_at','desc')->limit(7)->get();
-        return view('welcome', compact("bizs"));
+        $bizs = Biz::orderBy('created_at', 'desc')->limit(7)->get();
+
+        return view('welcome', compact('bizs'));
     }
 }

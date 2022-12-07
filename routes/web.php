@@ -16,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[BizController::class, 'getLatest']);
+Route::get('/', [BizController::class, 'getLatest']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'seller'], function () {
-
     Route::group(['prefix' => 'seller'], function () {
         Route::get('/dashboard', [\App\Http\Controllers\SellerController::class, 'dashboard'])->name('seller.dashboard');
     });
@@ -36,7 +35,6 @@ Route::group(['middleware' => 'seller'], function () {
 });
 
 Route::group(['middleware' => 'buyer'], function () {
-
     Route::group(['prefix' => 'buyer'], function () {
         Route::get('/dashboard', [\App\Http\Controllers\BuyerController::class, 'dashboard'])->name('buyer.dashboard');
     });

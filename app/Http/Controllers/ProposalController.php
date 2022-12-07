@@ -9,7 +9,6 @@ use App\Models\Proposal;
 use App\Models\User;
 use App\Notifications\SendProposalNotification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
