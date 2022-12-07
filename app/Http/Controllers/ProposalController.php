@@ -6,6 +6,7 @@ use App\Http\Requests\ProposalStoreRequest;
 use App\Models\Biz;
 use App\Models\BizProposal;
 use App\Models\Proposal;
+use App\Models\User;
 use App\Notifications\SendProposalNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,7 @@ class ProposalController extends Controller
                 'biz_id' => $biz->id,
                 'proposal_id' => $proposal->id,
             ]);
-            Notification::send(Auth::user(), new SendProposalNotification($proposal));
+            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal));
         }
 
         if ($request->get('type') === 'select_file') {
@@ -68,7 +69,7 @@ class ProposalController extends Controller
                 'proposal_file_path' => $path,
             ]);
 
-            Notification::send(Auth::user(), new SendProposalNotification($proposal));
+            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal));
         }
 
         // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
