@@ -7,6 +7,20 @@
     --list-sub-heading-mobile : 15px;
     --border-color: #05C19C;
 }
+.page-link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #000;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.active>.page-link, .page-link.active{
+    z-index: 3;
+    color: #fff;
+    background-color: #05C19C;
+    border-color: #05C19C;
+}
 .primary-bg{
     background-color: #05C19C;
 }

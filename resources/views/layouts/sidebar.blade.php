@@ -44,37 +44,40 @@
                     route("seller.dashboard")
 
 
-                    }}" aria-expanded="false" class="dropdown-toggle"> <i class="fa-solid fa-chart-line mr-5 ml-5"></i>Dashboard</a>
+                    }}" aria-expanded="false" class="dropdown-toggle"> <i class="fa-solid fa-chart-line mx-3 ml-5"></i>Dashboard</a>
                 </li>
 
                 
 
                 @if (Auth::user()->type->value == 'buyer' )
                 <li class="{{ (request()->is('proposals/create')) ? 'active' : '' }}">
-                    <a href="{{route("proposal.create")}}"><i class="fa-solid fa-plus mr-3"></i> Create Proposal</a>
+                    <a href="{{route("proposal.create")}}"><i class="fa-solid fa-plus mx-3"></i> Create Proposal</a>
                 </li>
                 <li class="{{ (request()->is('proposals')) ? 'active' : '' }}">
-                    <a href="{{route("proposal.index")}}" ><i class="fa-regular fa-file-lines mr-3"></i> My Proposal Lists</a>
+                    <a href="{{route("proposal.index")}}" ><i class="fa-regular fa-file-lines mx-3"></i> My Proposal Lists</a>
                 </li>
                 @elseif(Auth::user()->type->value == 'seller')
                 <li>
-                    <a href="{{route('biz.create')}}"><i class="fa-solid fa-plus mr-3"></i> Create Biz</a>
+                    <a href="{{route('biz.create')}}"><i class="fa-solid fa-plus mx-3"></i> Create Biz</a>
                 </li>
                 @endif
                 {{-- <li>
                     <a href="#"><i class="fa-solid fa-plus mr-3"></i> Create Biz</a>
                 </li> --}}
                 <li class="{{ (request()->is('notifications')) ? 'active' : '' }}">
-                    <a href="{{route('notifications.index')}}"><i class="fa-regular fa-bell mr-3"></i> Notifications</a>
+                    <a href="{{route('notifications.index')}}"><i class="fa-regular fa-bell mx-3"></i> Notifications</a>
                 </li>
-                <li>
+              
                     
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                    <form action="{{ route('logout') }}" method="POST" >
                         @csrf
-                        <input type="submit" value="logout"/>
+                        <button class="logout-button">
+                            <i class="fa-solid fa-right-from-bracket mx-3"></i>
+                            Logout
+                        </button>
                     </form>
                     {{-- <a href="#"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a> --}}
-                </li> 
+                
         </nav>
         
 

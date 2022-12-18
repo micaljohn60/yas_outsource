@@ -11,9 +11,11 @@
             </div>
             <h5 class="title">{{$biz->name}}</h5>
             <p class="body">{{$biz->biz_detail}}</p>
-            <div class="d-flex justify-content-evenly">
-                <a href="{{route("biz.show",$biz->id)}}" class="btn btn-outline-primary">See Detail</a>
-                <button type="button" class="btn btn-outline-secondary">More Like This</button>
+            <div class="d-flex justify-content-start mt-3 mb-2">
+                <a href="{{route("biz.show",$biz->id)}}" class=" mx-3 font-weight-bold text-decoration-none text-white">
+                    See Detail
+                </a>
+                
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
                 <th>Biz ID</th>
                 <th>Proposal Name</th>
                 <th>Go To Porposal</th>
-                <th>Actions</th>
+              
             </tr>
         </thead>
         <tbody>
@@ -54,14 +54,14 @@
                     {{-- <td >
                        <p ><small id="time"> {{$biz->created_at}}</small> </p>
                     </td> --}}
-                    <td>
+                    {{-- <td>
                         <button type="button" class="btn btn-link text-decoration-none">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button type="button" class="btn btn-link text-decoration-none">
                             <i class="fa-solid fa-trash"></i>
                         </button>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
             

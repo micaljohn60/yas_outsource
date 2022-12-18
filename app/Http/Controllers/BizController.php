@@ -14,7 +14,8 @@ class BizController extends Controller
      */
     public function index()
     {
-        return Biz::all();
+        $bizs = Biz::all();
+        return view('biz.list', compact('bizs'));
     }
 
     public function store(StoreBiz $request)
