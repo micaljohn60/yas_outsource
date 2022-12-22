@@ -16,11 +16,23 @@
                     </div> --}}
                 @endif
 
-                <div class="col-lg-7 card m-1">
-                    {{ $biz->name }}
+                <div class="col-lg-9 card m-1">
+                    
+                   <h3 class="mt-3"> {{ $biz->name }}</h3>
+                   <hr>
+                   <div class="mt-3">
+                    <p>Sale Period - </p>
+                    <p>Status - </p>
+                </div>
+                   <h3>Biz Detail</h3>
+                   {{$biz->biz_detail}}
+                   <hr>
+                   <h3>Reason for Sale</h3>
+                   {{$biz->reason_sale}}
                 </div>
 
                 
+                @if(Auth::check())
                 <div class="col-lg-3 card m-1">
                     @if (Auth::user()->type->value == 'buyer')
                         <form method="POST" enctype="multipart/form-data" action="/proposals/upload-to-biz">
@@ -48,7 +60,13 @@
                         </form>
                     @endif
                 </div>
-            </div>
+
+                @else
+                
+                
+
+                @endif
+            </>
 
         </div>
 
