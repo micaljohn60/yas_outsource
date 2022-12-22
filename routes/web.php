@@ -30,7 +30,6 @@ Route::group(['middleware' => 'seller'], function () {
     Route::group(['prefix' => 'bizs'], function () {
         Route::get('/create', [BizController::class, 'create'])->name('biz.create');
         Route::post('/create', [BizController::class, 'store'])->name('biz.store');
-        Route::get('/', [BizController::class, 'index'])->name('biz.index');
     });
 });
 
@@ -49,6 +48,7 @@ Route::group(['middleware' => 'buyer'], function () {
     });
 });
 
+Route::get('/bizs', [BizController::class, 'index'])->name('biz.index');
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
 Route::get('/bizs-by-user', [BizController::class, 'getBizByUser']); // get biz lists by users
 Route::get('/latest-bizs', [BizController::class, 'getLatest']); // get latest biz lists
