@@ -6,7 +6,9 @@
         <div class="col-lg-3">
             <div class="card text-white primary-bg mb-3" style="max-width: 18rem;">
                 <div class="card-body d-flex justify-content-center align-items-center">
-                    <h2 class="card-title ">Find Bizs</h2>
+                    <a href="{{route('biz.index')}}">
+                        Find Biz
+                    </a>
                 </div>
             </div>
         </div>
