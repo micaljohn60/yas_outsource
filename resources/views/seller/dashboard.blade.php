@@ -23,7 +23,7 @@
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-body">
                     <h2 class="card-title">Success Sell</h2>
-                    <p class="card-text text-white display-6">4</p>
+                    <p class="card-text text-white display-6">0</p>
                 </div>
             </div>
         </div>
@@ -63,9 +63,12 @@
                        <p ><small id="time"> {{$biz->created_at}}</small> </p>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-link text-decoration-none">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
+                        
+                        <a href="{{route('biz.edit',$biz->id)}}">
+                            <button type="button" class="btn btn-link text-decoration-none">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </a>
                         <button type="button" class="btn btn-link text-decoration-none">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -105,12 +108,9 @@
                     </td>
 
                     <td>
-                        <button type="button" class="btn btn-link text-decoration-none">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button type="button" class="btn btn-link text-decoration-none">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                        <button type="button" class="btn btn-outline-primary">Accept</button>
+                        <button type="button" class="btn btn-outline-danger">Decline</button>
+
                     </td>
                 </tr>
             @endforeach

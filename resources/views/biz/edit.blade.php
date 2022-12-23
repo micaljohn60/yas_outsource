@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
-    <form action="{{ route('biz.store') }}" method="POST">
+    <form action="" method="POST">
         @csrf
         <div class="row">
             @if (session()->has('message'))
@@ -15,7 +15,7 @@
                 @endif
             <div class="d-flex justify-content-between">
                 <h3>Please Complete the following information to sell</h3>
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" class="btn btn-primary" value="Update">
             </div>
 
 
@@ -34,7 +34,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror --}}
-                        <input class="" type="text" placeholder="Company Name*" name="name">
+                        <input class="" type="text" placeholder="Company Name*" name="name" value="{{$biz->name}}">
                     </div>
                     <div class="col-lg-6">
                         <input class="" type="text" placeholder="Year Establishment*" name="year_estlibshemnt">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 mt-3">
-                        <textarea placeholder="Company Information" id="" cols="30" rows="10" name="biz_detail"></textarea>
+                        <textarea placeholder="Company Information" id="" cols="30" rows="10" name="biz_detail">{{$biz->biz_detail}}</textarea>
                     </div>
                     <div class="col-lg-6 mt-3">
                         <input class="" type="text" placeholder="Position of Owner*" name="value">
@@ -55,16 +55,16 @@
                         <input class="" type="text" placeholder="Phone Number*" name="phone">
                     </div>
                     <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Register Number*" name="register_number">
+                        <input class="" type="text" placeholder="Register Number*" name="register_number" value="{{$biz->register_number}}">
                     </div>
                     <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Total Number of Shareholders*" name="size">
+                        <input class="" type="text" placeholder="Total Number of Shareholders*" name="size" value={{$biz->size}}>
                     </div>
                     <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Address *" name="address">
+                        <input class="" type="text" placeholder="Address *" name="address" value="{{$biz->address}}">
                     </div>
                     <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Country *" name="country">
+                        <input class="" type="text" placeholder="Country *" name="country" value="{{$biz->country}}">
                     </div>
                     <div class="col-lg-12 mt-3">
                         <div class="input-group mb-3">
@@ -90,7 +90,7 @@
                 <div class="row mt-3 custom-input">
 
                     <div class="col-lg-12">
-                        <textarea name="reason_sale" id="" cols="30" rows="10" ></textarea>
+                        <textarea name="reason_sale" id="" cols="30" rows="10" >{{$biz->reason_sale}}</textarea>
                     </div>
                     <h4>Wished Sale Period</h4>
                     <div class="col-lg-6 mt-3">

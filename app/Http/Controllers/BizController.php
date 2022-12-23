@@ -22,7 +22,8 @@ class BizController extends Controller
     {
         (new Biz())->createBiz($request);
 
-        return 'success';
+        // return 'success';
+        return redirect()->back()->with('message', 'Biz Created Successfully');
     }
 
     public function create()
