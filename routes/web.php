@@ -42,11 +42,13 @@ Route::group(['middleware' => 'buyer'], function () {
         Route::get('/create', [ProposalController::class, 'create'])->name('proposal.create');
         Route::post('/create', [ProposalController::class, 'store'])->name('proposal.store');
         Route::get('/', [ProposalController::class, 'index'])->name('proposal.index');
-        Route::get('/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
 
         Route::post('/upload-to-biz', [ProposalController::class, 'uploadProposalToBiz'])->name('proposal.biz.upload');
     });
 });
+
+Route::get('/proposals/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
+
 
 Route::get('/bizs', [BizController::class, 'index'])->name('biz.index');
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
