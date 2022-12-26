@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-lg-3 d-flex align-items-center justify-content-center">
 
-                                <p class="fs-6 ms-3 mt-3"><a href="#" class="text-decoration-none">See Detail</a></p>
+                                <p class="fs-6 ms-3 mt-3"><a href="{{route("proposal.show",$notification->data["id"])}}" class="text-decoration-none">See Detail</a></p>
 
                             </div>
                         </div>

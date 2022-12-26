@@ -33,9 +33,14 @@ class ProposalController extends Controller
         return view('proposal.list', compact('proposals')); //! frontend need to replace with return view('..',compact('proposals'));
     }
 
-    public function show(Proposal $proposal)
+    public function edit(Proposal $proposal) // this would be edit
     {
         return view('proposal.edit', compact('proposal')); //! frontend need to replace with return view('..',compact('proposal'));
+    }
+
+    public function show(Proposal $proposal) // this would be edit
+    {
+        return view('proposal.show', compact('proposal')); //! frontend need to replace with return view('..',compact('proposal'));
     }
 
     public function uploadProposalToBiz(Request $request)

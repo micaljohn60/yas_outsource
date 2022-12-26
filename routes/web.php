@@ -30,6 +30,7 @@ Route::group(['middleware' => 'seller'], function () {
     Route::group(['prefix' => 'bizs'], function () {
         Route::get('/create', [BizController::class, 'create'])->name('biz.create');
         Route::post('/create', [BizController::class, 'store'])->name('biz.store');
+        Route::post('/edit/{$id}', [BizController::class, 'edit'])->name('biz.edit');
     });
 });
 
@@ -47,8 +48,9 @@ Route::group(['middleware' => 'buyer'], function () {
     });
 });
 
-Route::get('/proposals/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
+Route::get('/proposals/show/{proposal}', [ProposalController::class, 'edit'])->name('proposal.edit');
 
+Route::get('/proposals/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
 
 Route::get('/bizs', [BizController::class, 'index'])->name('biz.index');
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
