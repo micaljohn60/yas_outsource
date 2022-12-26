@@ -21,11 +21,18 @@ class CreateBizsTable extends Migration
             $table->string('phone');
             $table->string('register_number');
             $table->string('country');
-            $table->string('address')->nullable();
-            $table->string('reason_sale');
+            $table->text('address')->nullable();
+            $table->text('reason_sale');
             $table->string('biz_detail');
-            $table->string('value')->nullable();
-            $table->string('size')->nullable();
+            $table->string('position_of_owner')->nullable();
+            $table->double('wish_sale_price')->nullable();
+            $table->double('actual_sale_price')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->integer('share_holder')->nullable();
+            $table->string('language')->default('english')->nullable();
+            $table->string('years_est')->nullable();
+            $table->text('file_path')->nullable();
             $table->timestamps();
         });
     }

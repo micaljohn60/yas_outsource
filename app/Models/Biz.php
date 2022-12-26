@@ -21,8 +21,15 @@ class Biz extends Model
         'address',
         'reason_sale',
         'biz_detail',
-        'value',
-        'size',
+        'position_of_owner',
+        'wish_sale_price',
+        'actual_sale_price',
+        'start_date',
+        'end_date',
+        'share_holder',
+        'language',
+        'years_est',
+        'file_path',
     ];
 
     public function createBiz($request)
@@ -37,8 +44,15 @@ class Biz extends Model
             'address' => $request->address,
             'reason_sale' => $request->reason_sale,
             'biz_detail' => $request->biz_detail,
-            'value' => $request->value,
-            'size' => $request->size,
+            'position_of_owner',
+            'wish_sale_price' => $request->position_of_owner,
+            'actual_sale_price' => $request->wish_sale_price,
+            'start_date' => $request->actual_sale_price,
+            'end_date' => $request->start_date,
+            'share_holder' => $request->end_date,
+            'language' => $request->share_holder,
+            'years_est' => $request->language,
+            'file_path' => $request->years_est,
         ]);
     }
 }
