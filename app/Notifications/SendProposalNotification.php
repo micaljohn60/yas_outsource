@@ -60,7 +60,7 @@ class SendProposalNotification extends Notification
     {
         return [
             'id' => $this->proposal['id'],
-            'title' => $this->proposal['title'] ?? '',
+            'title' => $this->proposal['title'],
         ];
     }
 }
