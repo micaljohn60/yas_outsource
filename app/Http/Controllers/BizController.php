@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
+use Illuminate\Support\Facades\Storage;
 
 class BizController extends Controller
 {
@@ -20,7 +21,25 @@ class BizController extends Controller
 
     public function store(StoreBiz $request)
     {
-        (new Biz())->createBiz($request);
+        $biz = (new Biz())->createBiz($request);
+
+        if ($request->has('file_path')) {
+
+            $file = $request->file('file_path');
+
+            $originalName = $file->getClientOriginalName();
+
+            $sellerId = auth()->user()->id;
+
+            $path = 'biz/seller_'.$sellerId.'/'.$originalName;
+
+            Storage::put($path, file_get_contents($file));
+
+            $biz->update([
+                'file_path' => $path
+            ]);
+        }
+
 
         // return 'success';
         return redirect()->back()->with('message', 'Biz Created Successfully');
