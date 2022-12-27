@@ -32,6 +32,7 @@ Route::group(['middleware' => 'seller'], function () {
         Route::post('/create', [BizController::class, 'store'])->name('biz.store');
         Route::put('/update/{biz}', [BizController::class, 'update'])->name('biz.update');
         Route::get('/edit/{biz}', [BizController::class, 'edit'])->name('biz.edit');
+        Route::delete('/delete/{biz}', [BizController::class, 'delete'])->name('biz.delete');
     });
 });
 

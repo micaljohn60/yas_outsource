@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class BizController extends Controller
@@ -31,7 +32,7 @@ class BizController extends Controller
 
             $sellerId = auth()->user()->id;
 
-            $path = 'biz/seller_'.$sellerId.'/'.$originalName;
+            $path = 'biz/seller_' . $sellerId . '/' . $originalName;
 
             Storage::put($path, file_get_contents($file));
 
@@ -55,6 +56,11 @@ class BizController extends Controller
     {
         (new Biz())->updateBiz($biz);
 
+        return redirect()->back()->with('message', 'Biz updated Successfully');
+    }
+
+    public function delete(StoreBiz $biz)
+    {
         return redirect()->back()->with('message', 'Biz updated Successfully');
     }
 
