@@ -15,13 +15,13 @@
                 <a href="{{route("biz.show",$biz->id)}}" class=" mx-3 font-weight-bold text-decoration-none text-white">
                     See Detail
                 </a>
-                
+
             </div>
         </div>
     </div>
     @endforeach
 </div>
-    
+
 </div>
 
 @endsection

@@ -16,6 +16,7 @@ class BizController extends Controller
     public function index()
     {
         $bizs = Biz::all();
+
         return view('biz.list', compact('bizs'));
     }
 
@@ -24,7 +25,6 @@ class BizController extends Controller
         $biz = (new Biz())->createBiz($request);
 
         if ($request->has('file_path')) {
-
             $file = $request->file('file_path');
 
             $originalName = $file->getClientOriginalName();
@@ -36,13 +36,26 @@ class BizController extends Controller
             Storage::put($path, file_get_contents($file));
 
             $biz->update([
-                'file_path' => $path
+                'file_path' => $path,
             ]);
         }
 
-
         // return 'success';
         return redirect()->back()->with('message', 'Biz Created Successfully');
+    }
+
+    public function edit(Biz $biz)
+    {
+        $view = 'biz.edit'; // need to add FE
+
+        return view($view, compact('biz'));
+    }
+
+    public function update(StoreBiz $biz)
+    {
+        (new Biz())->updateBiz($biz);
+
+        return redirect()->back()->with('message', 'Biz updated Successfully');
     }
 
     public function create()

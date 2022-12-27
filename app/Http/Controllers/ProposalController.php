@@ -28,7 +28,7 @@ class ProposalController extends Controller
 
     public function index()
     {
-        $proposals = Proposal::select('id', 'title', 'description', 'created_at')->where('user_id',auth()->user()->id)->latest()->get();
+        $proposals = Proposal::select('id', 'title', 'description', 'created_at')->where('user_id', auth()->user()->id)->latest()->get();
 
         return view('proposal.list', compact('proposals')); //! frontend need to replace with return view('..',compact('proposals'));
     }

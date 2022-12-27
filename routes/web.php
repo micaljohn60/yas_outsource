@@ -30,7 +30,8 @@ Route::group(['middleware' => 'seller'], function () {
     Route::group(['prefix' => 'bizs'], function () {
         Route::get('/create', [BizController::class, 'create'])->name('biz.create');
         Route::post('/create', [BizController::class, 'store'])->name('biz.store');
-        Route::post('/edit/{$id}', [BizController::class, 'edit'])->name('biz.edit');
+        Route::put('/update/{biz}', [BizController::class, 'update'])->name('biz.update');
+        Route::get('/edit/{biz}', [BizController::class, 'edit'])->name('biz.edit');
     });
 });
 
