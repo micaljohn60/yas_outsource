@@ -15,14 +15,17 @@ class SendProposalNotification extends Notification
 
     private $proposal;
 
+    private $biz;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($proposal)
+    public function __construct($proposal, $biz)
     {
         $this->proposal = $proposal;
+        $this->biz = $biz;
     }
 
     /**
@@ -61,6 +64,7 @@ class SendProposalNotification extends Notification
         return [
             'id' => $this->proposal['id'],
             'title' => $this->proposal['title'],
+            'biz_id' => $this->biz->id,
         ];
     }
 }

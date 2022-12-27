@@ -34,6 +34,7 @@ Route::group(['middleware' => 'seller'], function () {
         Route::get('/edit/{biz}', [BizController::class, 'edit'])->name('biz.edit');
         Route::delete('/delete/{biz}', [BizController::class, 'delete'])->name('biz.delete');
     });
+    Route::post('/accept/{proposal}/{biz_id}', [ProposalController::class, 'acceptBiz'])->name('proposal.biz.accept');
 });
 
 Route::group(['middleware' => 'buyer'], function () {
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'buyer'], function () {
 Route::get('/proposals/show/{proposal}', [ProposalController::class, 'edit'])->name('proposal.edit');
 
 Route::get('/proposals/{proposal}', [ProposalController::class, 'show'])->name('proposal.show');
+Route::get('/proposals/{proposal}/{biz_id}', [ProposalController::class, 'show'])->name('notification.proposal.show');
 
 Route::get('/bizs', [BizController::class, 'index'])->name('biz.index');
 Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');

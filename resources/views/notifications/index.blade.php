@@ -16,7 +16,12 @@
                             </div>
                             <div class="col-lg-3 d-flex align-items-center justify-content-center">
 
-                                <p class="fs-6 ms-3 mt-3"><a href="{{route("proposal.show",$notification->data["id"])}}" class="text-decoration-none">See Detail</a></p>
+                                <p class="fs-6 ms-3 mt-3"><a href="{{ route('notification.proposal.show', ['proposal' => $notification->data["id"],
+                                    'biz_id' => $notification->data["biz_id"]]) }}"
+                                                             class="text-decoration-none">See Detail</a></p>
+{{--                                <p class="fs-6 ms-3 mt-3"><a href="{{route("proposal.show",$notification->data["id"],$notification->data["biz_id"])}}"--}}
+{{--                                                             class="text-decoration-none">{{$notification->data["biz_id"]}}</a>--}}
+{{--                                </p>--}}
 
                             </div>
                         </div>
