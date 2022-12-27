@@ -19,6 +19,7 @@ class CreateBizProposalTable extends Migration
             $table->foreignId('proposal_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('proposal_upload_user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->text('proposal_file_path')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
