@@ -9,7 +9,7 @@
     
         @foreach ($proposals as $key => $proposal)
         <div class="col-lg-2">
-        <a href="{{route('proposal.show',$proposal->id)}}">
+        <a href="{{route('proposal.edit',$proposal->id)}}">
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
                   <h5 class="card-title d-inline-block text-truncate" style="max-width: 10rem;">{{$proposal->title}}</h5>

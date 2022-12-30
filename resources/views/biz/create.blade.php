@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
-    <form action="{{ route('biz.store') }}" method="POST">
+    <form action="{{ route('biz.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             @if (session()->has('message'))
@@ -42,14 +42,14 @@
                     <div class="col-lg-12 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                            <input type="file" class="form-control" id="inputGroupFile01">
+                            <input type="file" class="form-control" id="inputGroupFile01" name="file_path">
                         </div>
                     </div>
                     <div class="col-lg-12 mt-3">
                         <textarea placeholder="Company Information" id="" cols="30" rows="10" name="biz_detail"></textarea>
                     </div>
                     <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Position of Owner*" name="value">
+                        <input class="" type="text" placeholder="Position of Owner*" name="position_of_owner">
                     </div>
                     <div class="col-lg-6 mt-3">
                         <input class="" type="text" placeholder="Phone Number*" name="phone">
@@ -69,7 +69,7 @@
                     <div class="col-lg-12 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <select class="form-select" id="inputGroupSelect01" name="language">
                                 <option selected>Preferred language</option>
                                 <option value="en">English</option>
                                 <option value="jp">Japanese</option>
@@ -96,7 +96,7 @@
                     <div class="col-lg-6 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">Start Date</label>
-                            <input type="date" class="form-control" id="inputGroupFile01">
+                            <input type="date" class="form-control" id="inputGroupFile01" name="start_date">
                         </div>
 
 
@@ -104,16 +104,16 @@
                     <div class="col-lg-6 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">End Date</label>
-                            <input type="date" class="form-control" id="inputGroupFile01">
+                            <input type="date" class="form-control" id="inputGroupFile01" name="end_date">
                         </div>
                     </div>
                     <h4 class="mt-3">Wished Sale Price</h4>
                     <div class="col-lg-12 mt-3">
-                        <input class="" type="text" placeholder="Wish Sale Price *">
+                        <input class="" type="text" placeholder="Wish Sale Price *" name="wish_sale_price">
                     </div>
                     <h4 class="mt-3">Actual Sale Price</h4>
                     <div class="col-lg-12 mt-3">
-                        <input class="" type="text" placeholder="Year Establishment*">
+                        <input class="" type="text" placeholder="Year Establishment*" name="value">
                     </div>
                 </div>
             </div>

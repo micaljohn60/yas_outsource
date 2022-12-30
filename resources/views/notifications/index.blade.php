@@ -11,7 +11,7 @@
                     <div class="">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h5 class="mt-3 ms-3">{{ $notification->data['title']}}</h5>
+                                <h5 class="mt-3 ms-3">{{ $notification->data['title'] ?? "File upload"}}</h5>
                                 <p class="fs-6 ms-3">Notification Description</p>
                             </div>
                             <div class="col-lg-3 d-flex align-items-center justify-content-center">
