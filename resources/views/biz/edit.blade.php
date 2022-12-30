@@ -1,8 +1,9 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
-    <form action="" method="POST">
+    <form action="{{ route('biz.update',$biz) }}" method="POST">
         @csrf
+        @method('PUT')
         <div class="row">
             @if (session()->has('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

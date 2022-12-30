@@ -13,6 +13,7 @@ class BizProposal extends Model
         'proposal_id',
         'proposal_upload_user_id',
         'proposal_file_path',
+        'status',
     ];
 
     public function biz()

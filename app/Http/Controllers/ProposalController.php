@@ -28,7 +28,7 @@ class ProposalController extends Controller
 
     public function index()
     {
-        $proposals = Proposal::select('id', 'title', 'description', 'created_at')->where('user_id',auth()->user()->id)->latest()->get();
+        $proposals = Proposal::select('id', 'title', 'description', 'created_at')->where('user_id', auth()->user()->id)->latest()->get();
 
         return view('proposal.list', compact('proposals')); //! frontend need to replace with return view('..',compact('proposals'));
     }
@@ -38,13 +38,20 @@ class ProposalController extends Controller
         return view('proposal.edit', compact('proposal')); //! frontend need to replace with return view('..',compact('proposal'));
     }
 
-    public function show(Proposal $proposal) // this would be edit
+    public function show(Proposal $proposal, Request $request) // this would be edit
     {
-        return view('proposal.show', compact('proposal')); //! frontend need to replace with return view('..',compact('proposal'));
+        $biz = Biz::findOrFail($request->biz_id);
+
+        return view('proposal.show', compact('proposal', 'biz')); //! frontend need to replace with return view('..',compact('proposal'));
     }
 
     public function uploadProposalToBiz(Request $request)
     {
+        $bizProposal = BizProposal::where('biz_id', $request->get('biz_id'))->where('proposal_id', $request->get('proposal_id'))->first();
+        //TODO - need to redirect with error message
+        if ($bizProposal) {
+            return redirect()->back()->with('message', 'Already upload proposal');
+        }
         $biz = Biz::findOrFail($request->get('biz_id'));
         if ($request->get('type') === 'my_proposal') {
             $proposal = Proposal::findOrFail($request->get('proposal_id'));
@@ -53,7 +60,7 @@ class ProposalController extends Controller
                 'biz_id' => $biz->id,
                 'proposal_id' => $proposal->id,
             ]);
-            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal));
+            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal, $biz));
         }
 
         if ($request->get('type') === 'select_file') {
@@ -73,8 +80,20 @@ class ProposalController extends Controller
                 'proposal_file_path' => $path,
             ]);
 
-            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal));
+            Notification::send(User::find($biz->user_id), new SendProposalNotification($proposal, $biz));
         }
+
+        // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
+        return redirect()->back()->with('message', 'Proposal Sent Successfully');
+    }
+
+    public function acceptBiz(Proposal $proposal, Request $request)
+    {
+        $biz = Biz::findOrFail($request->biz_id);
+
+        BizProposal::where('biz_id', $request->biz_id)->where('proposal_id', $proposal->id)->update(['status' => 'accept']);
+
+        Notification::send(User::find($proposal->user_id), new SendProposalNotification($proposal, $biz));
 
         // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
         return redirect()->back()->with('message', 'Proposal Sent Successfully');
