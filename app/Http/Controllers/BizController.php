@@ -41,7 +41,7 @@ class BizController extends Controller
         }
 
         // return 'success';
-        return redirect()->back()->with('message', 'Biz Created Successfully');
+        return redirect()->route('seller.dashboard')->with('message', 'Biz Created Successfully');
     }
 
     public function edit(Biz $biz)
@@ -60,7 +60,7 @@ class BizController extends Controller
 
     public function delete(StoreBiz $biz)
     {
-        return redirect()->back()->with('message', 'Biz updated Successfully');
+        return redirect()->back()->with('message', 'Biz Deleted Successfully');
     }
 
     public function create()

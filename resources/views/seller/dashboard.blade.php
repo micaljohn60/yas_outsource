@@ -2,6 +2,15 @@
 
 @section('dashboard_content')
     <div class="container">
+        @if (session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {{-- <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div> --}}
+            @endif
         <div class="row">
             <div class="col-lg-3">
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -56,7 +65,7 @@
                     <td>
                         {{$biz->register_number}}
                     </td>
-                    <td>
+                    <td class="text-truncate" style="max-width: 150px;">
                         {{$biz->biz_detail}}
                     </td>
                     <td>
@@ -70,7 +79,7 @@
                             </button>
                         </a>
 
-                        <form action="{{ route('biz.delete', $biz->id) }}" method="post" id="biz-{{$biz->id}}">
+                        <form action="{{ route('biz.delete', $biz->id) }}" method="POST" id="biz-{{$biz->id}}">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-link text-decoration-none">
@@ -112,9 +121,13 @@
                         <a href="">{{empty($proposalsToMyBiz->proposal_id) ? "Download Proposal" : "Go To Proposal"}}</a>
                     </td>
 
-                    <td>
-                        <button type="button" class="btn btn-outline-primary">Accept</button>
-                        <button type="button" class="btn btn-outline-danger">Decline</button>
+                    <td class="d-flex ">
+                        <form method="POST" action={{route("proposal.biz.accept",["proposal"=>$proposalsToMyBiz->proposal_id,"biz_id"=>$proposalsToMyBiz->biz->id])}}>
+                            @csrf
+                            <input type="submit" class="btn btn-outline-primary m-1" value="Accept">
+                        </form>
+                        
+                        <button type="button" class="btn btn-outline-danger m-1">Decline</button>
 
                     </td>
                 </tr>

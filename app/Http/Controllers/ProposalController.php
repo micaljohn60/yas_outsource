@@ -96,6 +96,6 @@ class ProposalController extends Controller
         Notification::send(User::find($proposal->user_id), new SendProposalNotification($proposal, $biz));
 
         // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
-        return redirect()->back()->with('message', 'Proposal Sent Successfully');
+        return redirect()->back()->with('message', 'Proposal Accept Successfully');
     }
 }
