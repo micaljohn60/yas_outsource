@@ -59,7 +59,7 @@ class Biz extends Model
     public function updateBiz($biz)
     {
         $request = $biz->all();
-        static::where('id', $biz->id)->update([
+        static::where('id', $request['biz_id'])->update([
             'user_id' => auth()->user()->id,
             'name' => $request['name'],
             'status' => $request['status'],
@@ -71,10 +71,10 @@ class Biz extends Model
             'biz_detail' => $request['biz_detail'],
             'position_of_owner' => $request['position_of_owner'] ?? '',
             'wish_sale_price' => $request['wish_sale_price'] ?? '',
-            'actual_sale_price' => $request['actual_sale_pricece'] ?? '',
+            'actual_sale_price' => $request['actual_sale_price'] ?? '',
             'start_date' => $request['start_date'] ?? '',
             'end_date' => $request['end_date'] ?? '',
-            'share_holder' => $request['share_holder'] ?? '',
+            'share_holder' => $request['share_holder'] ?? null,
             'language' => $request['language'] ?? '',
             'years_est' => $request['years_est'] ?? '',
             'file_path' => $request['file_path'] ?? '',

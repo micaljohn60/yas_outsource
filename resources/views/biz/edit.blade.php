@@ -117,10 +117,10 @@
                     <div class="col-lg-12 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                            <select class="form-select" id="inputGroupSelect01" value="{{$biz->language}}">
+                            <select class="form-select" id="inputGroupSelect01" name="language">
                                 <option selected>Preferred language</option>
-                                <option value="en">English</option>
-                                <option value="jp">Japanese</option>
+                                <option value="en" @if($biz->language=="en")selected @endif>English</option>
+                                <option value="jp" @if($biz->language=="jp")selected @endif>Japanese</option>
                             </select>
                         </div>
 
