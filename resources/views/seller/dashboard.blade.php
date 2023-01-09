@@ -128,8 +128,11 @@
                                 @csrf
                                 <input type="submit" class="btn btn-outline-primary m-1" value="Accept">
                             </form>
-
-                            <button type="button" class="btn btn-outline-danger m-1">Decline</button>
+                            <form method="POST" action=
+                                {{route("proposal.biz.decline",["proposal"=>$proposalsToMyBiz->proposal_id,"biz_id"=>$proposalsToMyBiz->biz->id])}}>
+                                @csrf
+                                <input type="submit" class="btn btn-outline-primary m-1" value="Decline">
+                            </form>
                         @else
                             <p>{{$proposalsToMyBiz->status}}</p>
                         @endif

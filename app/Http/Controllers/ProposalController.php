@@ -98,4 +98,15 @@ class ProposalController extends Controller
         // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
         return redirect()->back()->with('message', 'Proposal Accept Successfully');
     }
+    public function declineBiz(Proposal $proposal, Request $request)
+    {
+        $biz = Biz::findOrFail($request->biz_id);
+
+        BizProposal::where('biz_id', $request->biz_id)->where('proposal_id', $proposal->id)->update(['status' => 'decline']);
+
+        Notification::send(User::find($proposal->user_id), new SendProposalNotification($proposal, $biz));
+
+        // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
+        return redirect()->back()->with('message', 'Proposal Decline Successfully');
+    }
 }

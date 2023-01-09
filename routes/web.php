@@ -35,6 +35,7 @@ Route::group(['middleware' => 'seller'], function () {
         Route::delete('/delete/{id}', [BizController::class, 'delete'])->name('biz.delete');
     });
     Route::post('/accept/{proposal}/{biz_id}', [ProposalController::class, 'acceptBiz'])->name('proposal.biz.accept');
+    Route::post('/decline/{proposal}/{biz_id}', [ProposalController::class, 'declineBiz'])->name('proposal.biz.decline');
 });
 
 Route::group(['middleware' => 'buyer'], function () {
