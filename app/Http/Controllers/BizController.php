@@ -58,8 +58,9 @@ class BizController extends Controller
         return redirect()->back()->with('message', 'Biz updated Successfully');
     }
 
-    public function delete(StoreBiz $biz)
+    public function delete($id)
     {
+        Biz::find($id)->delete();
         return redirect()->back()->with('message', 'Biz Deleted Successfully');
     }
 

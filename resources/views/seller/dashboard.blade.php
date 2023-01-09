@@ -122,12 +122,17 @@
                     </td>
 
                     <td class="d-flex ">
-                        <form method="POST" action={{route("proposal.biz.accept",["proposal"=>$proposalsToMyBiz->proposal_id,"biz_id"=>$proposalsToMyBiz->biz->id])}}>
-                            @csrf
-                            <input type="submit" class="btn btn-outline-primary m-1" value="Accept">
-                        </form>
-                        
-                        <button type="button" class="btn btn-outline-danger m-1">Decline</button>
+                        @if(isset($proposalsToMyBiz->status)&&$proposalsToMyBiz->status!=="accept")
+                            <form method="POST" action=
+                                {{route("proposal.biz.accept",["proposal"=>$proposalsToMyBiz->proposal_id,"biz_id"=>$proposalsToMyBiz->biz->id])}}>
+                                @csrf
+                                <input type="submit" class="btn btn-outline-primary m-1" value="Accept">
+                            </form>
+
+                            <button type="button" class="btn btn-outline-danger m-1">Decline</button>
+                        @else
+                            <p>{{$proposalsToMyBiz->status}}</p>
+                        @endif
 
                     </td>
                 </tr>
