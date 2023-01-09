@@ -5,6 +5,7 @@
         @csrf
         @method('PUT')
         <div class="row">
+            <input type="hidden" value="{{$biz->id}}" name="biz_id">
             @if (session()->has('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session()->get('message') }}
