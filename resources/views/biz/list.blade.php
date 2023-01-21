@@ -12,7 +12,7 @@
             <h5 class="title">{{$biz->name}}</h5>
             <p class="body text-truncate" style="max-width: 200px;">{{$biz->biz_detail}}</p>
             <div class="d-flex justify-content-start mt-3 mb-2">
-                <a href="{{route("biz.show",$biz->id)}}" class=" mx-3 font-weight-bold text-decoration-none text-white">
+                <a href="{{route("biz.show",$biz->id)}}" class=" mx-3 font-weight-bold text-decoration-none text-dark">
                     See Detail
                 </a>
 
