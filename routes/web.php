@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BizController::class, 'getLatest']);
+Route::get('/admin/login', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('adminlogin');
+Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'adminDashboard'])->name('adminDashboard');
+Route::get('/admin/pendingbizs', [App\Http\Controllers\HomeController::class, 'pendingBizLists'])->name('pendingBiz');
+
 
 Auth::routes();
 
