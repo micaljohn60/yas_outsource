@@ -80,4 +80,9 @@ class Biz extends Model
             'file_path' => $request['file_path'] ?? '',
         ]);
     }
+
+    public function scopePendingList($query)
+    {
+        return $query->where('status', '!=', 'pending');
+    }
 }

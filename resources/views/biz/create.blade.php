@@ -28,7 +28,7 @@
 
                 <div class="row mt-3 custom-input">
                     <div class="col-lg-6">
-                        <input type="hidden" name="status" value="onsale" />
+                        <input type="hidden" name="status" value="pending" />
                         {{-- @error('status')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -130,20 +130,20 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <form class="form" action="#" method="post">                           
-                            <div class="fv-row">                                
-                                <div class="dropzone" id="kt_dropzonejs_example_1">                                    
-                                    <div class="dz-message needsclick">                                       
+                        <form class="form" action="#" method="post">
+                            <div class="fv-row">
+                                <div class="dropzone" id="kt_dropzonejs_example_1">
+                                    <div class="dz-message needsclick">
                                         <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
                                         <div class="ms-4">
                                             <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.
                                             </h3>
                                             <span class="fs-7 fw-semibold text-gray-400">Upload up to 10 files</span>
                                         </div>
-                                       
+
                                     </div>
-                                </div>                                
-                            </div>                        
+                                </div>
+                            </div>
                         </form>
                     </div>
 
@@ -222,7 +222,7 @@
 
                     </div>
 
-                    
+
 
 
                 </div>

@@ -15,7 +15,7 @@ class BizController extends Controller
      */
     public function index()
     {
-        $bizs = Biz::all();
+        $bizs = Biz::pendingList()->latest()->get();
 
         return view('biz.list', compact('bizs'));
     }
@@ -31,7 +31,7 @@ class BizController extends Controller
 
             $sellerId = auth()->user()->id;
 
-            $path = 'biz/seller_'.$sellerId.'/'.$originalName;
+            $path = 'biz/seller_' . $sellerId . '/' . $originalName;
 
             Storage::put($path, file_get_contents($file));
 
@@ -91,7 +91,7 @@ class BizController extends Controller
 
     public function getLatest()
     {
-        $bizs = Biz::orderBy('created_at', 'desc')->limit(7)->get();
+        $bizs = Biz::pendingList()->latest()->take(7)->get();
 
         return view('welcome', compact('bizs'));
     }
