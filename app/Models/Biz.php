@@ -30,6 +30,7 @@ class Biz extends Model
         'language',
         'years_est',
         'file_path',
+        'currency'
     ];
 
     public function createBiz($request)
@@ -53,6 +54,7 @@ class Biz extends Model
             'language' => $request->language,
             'years_est' => $request->years_est,
             'file_path' => $request->file_path,
+            'currency' => $request->currency
         ]);
     }
 

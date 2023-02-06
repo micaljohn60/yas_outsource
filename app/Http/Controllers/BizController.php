@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
+use App\Models\BizImage;
 use Illuminate\Support\Facades\Storage;
 
 class BizController extends Controller
