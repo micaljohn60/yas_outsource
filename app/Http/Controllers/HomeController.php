@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Biz;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,6 +26,8 @@ class HomeController extends Controller
     {
         if (Auth::user()->type->value == 'seller') {
             return redirect('/seller/dashboard');
+        } elseif (Auth::user()->type->value == 'admin') {
+            return redirect('/admin/dashboard');
         } else {
             return redirect('/buyer/dashboard');
         }
@@ -42,6 +45,14 @@ class HomeController extends Controller
 
     public function pendingBizLists()
     {
-        return view('admin.biz.bizlists');
+        $bizs = Biz::pendingList()->latest()->get();
+        return view('admin.biz.bizlists', compact('bizs'));
+    }
+
+    public function publishBiz($id)
+    {
+
+        Biz::find($id)->update(['status' => "onsale"]);
+        return redirect()->route('pendingBiz');
     }
 }

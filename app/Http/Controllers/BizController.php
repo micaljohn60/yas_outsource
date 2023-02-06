@@ -15,7 +15,7 @@ class BizController extends Controller
      */
     public function index()
     {
-        $bizs = Biz::pendingList()->latest()->get();
+        $bizs = Biz::publishList()->latest()->get();
 
         return view('biz.list', compact('bizs'));
     }
@@ -46,16 +46,22 @@ class BizController extends Controller
 
     public function edit(Biz $biz)
     {
+        if ($biz->status != "pending") {
+            return redirect()->route('biz.index');
+        }
         $view = 'biz.edit'; // need to add FE
-
         return view($view, compact('biz'));
     }
 
     public function update(StoreBiz $biz)
     {
-        (new Biz())->updateBiz($biz);
+        if ($biz->status == "pending") {
+            (new Biz())->updateBiz($biz);
 
-        return redirect()->back()->with('message', 'Biz updated Successfully');
+            return redirect()->back()->with('message', 'Biz updated Successfully');
+        }
+        return redirect()->back()->with('message', 'Biz cannot update!');
+
     }
 
     public function delete($id)
@@ -91,7 +97,7 @@ class BizController extends Controller
 
     public function getLatest()
     {
-        $bizs = Biz::pendingList()->latest()->take(7)->get();
+        $bizs = Biz::publishList()->latest()->take(7)->get();
 
         return view('welcome', compact('bizs'));
     }

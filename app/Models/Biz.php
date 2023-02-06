@@ -81,8 +81,12 @@ class Biz extends Model
         ]);
     }
 
-    public function scopePendingList($query)
+    public function scopePublishList($query)
     {
         return $query->where('status', '!=', 'pending');
+    }
+    public function scopePendingList($query)
+    {
+        return $query->where('status', 'pending');
     }
 }
