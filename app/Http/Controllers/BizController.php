@@ -41,6 +41,25 @@ class BizController extends Controller
             ]);
         }
 
+        if ($request->has('biz_img')) {
+            $file = $request->file('biz_img');
+
+            $originalName = $file->getClientOriginalName();
+
+            $sellerId = auth()->user()->id;
+
+            $path = 'biz/img/seller_' . $sellerId . '/' . $originalName;
+
+            Storage::put($path, file_get_contents($file));
+
+            BizImage::create([
+                'biz_id' => $biz->id,
+                'img_path' => $path
+            ]);
+        }
+
+
+
         // return 'success';
         return redirect()->route('seller.dashboard')->with('message', 'Biz Created Successfully');
     }
