@@ -46,7 +46,15 @@ class HomeController extends Controller
     public function pendingBizLists()
     {
         $bizs = Biz::pendingList()->latest()->get();
-        return view('admin.biz.bizlists', compact('bizs'));
+        $status = "pending";
+        return view('admin.biz.bizlists', compact('bizs','status'));
+    }
+
+    public function acceptedBizLists()
+    {
+        $bizs = Biz::where(["status"=>"onsale"])->get();
+        $status = "onsale";
+        return view('admin.biz.bizlists', compact('bizs','status'));
     }
 
     public function publishBiz($id)

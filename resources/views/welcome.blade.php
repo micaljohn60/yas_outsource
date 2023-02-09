@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container mt-3 mb-3">
+    <div class="d-flex justify-content-center align-items-center">
+        <form>
+            <input type="text" name="Search Here" placeholder="Search Here"/>
+            <select name="search_options">            
+                <option value="seller">Seller</option>
+                <option value="buyer">Buyer</option>
+                <option value="experts">Experts</option>
+            </select>
+        </form>
+    </div>
+</div>
 <div class="container-fluid homepage-inverse-header">
+    
     <div class="container">
         <h1 class="homepage-inverse-header__title">
             Welcome to Outsource

@@ -56,11 +56,11 @@
                 </li>
 
                 <li class="{{ (request()->is('admin/pendingbizs')) ? 'active' : '' }}">
-                    <a href=""><i class="fa-solid fa-file-arrow-down mx-3"></i> Incoming Pending Bizs</a>
+                    <a href="{{route('pendingBiz')}}"><i class="fa-solid fa-file-arrow-down mx-3"></i> Incoming Pending Bizs</a>
                 </li>
 
-                <li class="{{ (request()->is('admin/accepted')) ? 'active' : '' }}">                    
-                    <a href=""><i class="fa-solid fa-check-to-slot mx-3"></i> Accepted Bizs</a>
+                <li class="{{ (request()->is('admin/acceptedbizs')) ? 'active' : '' }}">                    
+                    <a href="{{route('acceptedBiz')}}"><i class="fa-solid fa-check-to-slot mx-3"></i> Accepted Bizs</a>
                 </li>
 
                 <li class="{{ (request()->is('admin/roleandpermissions')) ? 'active' : '' }}">                    
@@ -73,9 +73,7 @@
 
                 <li class="{{ (request()->is('admin/staffs')) ? 'active' : '' }}">                    
                     <a href=""><i class="fa-solid fa-user-shield mx-3"></i> Staffs </a>
-                </li>
-
-                
+                </li>           
 
                 
 

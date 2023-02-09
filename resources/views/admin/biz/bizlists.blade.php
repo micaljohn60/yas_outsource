@@ -1,7 +1,7 @@
 @extends('layouts.admin_sidebar')
 
 @section('admin_content')
-    <h3 class="font-weight-bold mt-3">Incoming Pending Bizs</h3>
+    <h3 class="font-weight-bold mt-3">{{$status == "pending" ? "Incoming Pending Biz" : "Accepted Bizs"}}</h3>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
         <tr>
@@ -35,7 +35,9 @@
                 <td>
                     <p><small id="time"> {{$biz->created_at}}</small></p>
                 </td>
+                
                 <td>
+                    @if($status == "pending")
                     <form action="{{ route('biz.published', $biz->id) }}" method="POST" id="biz-{{$biz->id}}">
                         @method('post')
                         @csrf
@@ -43,6 +45,11 @@
                             <i class="fa-solid fa-upload"></i>
                         </button>
                     </form>
+                    @else
+                    <form action="{{ route('biz.published', $biz->id) }}" method="POST" id="biz-{{$biz->id}}">
+                        remove
+                    </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

@@ -213,7 +213,7 @@
                     <div class="col-lg-12 mt-3">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Currency</label>
-                            <select class="form-select" id="inputGroupSelect01" name="language">
+                            <select class="form-select" id="inputGroupSelect01" name="currency">
                                 <option value="en" selected>USD</option>
                                 <option value="jp">JP</option>
                                 <option value="jp">EUR</option>
