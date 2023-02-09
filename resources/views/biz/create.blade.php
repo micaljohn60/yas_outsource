@@ -130,7 +130,8 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <form class="form" action="#" method="post">
+                        <form class="form" action="{{ route('biz.store') }}" method="post"  name="file" files="true" enctype="multipart/form-data" >
+                            @csrf
                             <div class="fv-row">
                                 <div class="dropzone" id="kt_dropzonejs_example_1">
                                     <div class="dz-message needsclick">
@@ -140,7 +141,7 @@
                                             </h3>
                                             <span class="fs-7 fw-semibold text-gray-400">Upload up to 10 files</span>
                                         </div>
-
+                
                                     </div>
                                 </div>
                             </div>
@@ -232,13 +233,18 @@
     </form>
 
 
+
+
     <script>
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+            url: 'http://127.0.0.1:8000/bizs/create', // Set the url for your upload script location
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             accept: function(file, done) {
                 if (file.name == "wow.jpg") {
                     done("Naha, you don't.");

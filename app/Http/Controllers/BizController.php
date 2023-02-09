@@ -25,8 +25,8 @@ class BizController extends Controller
     {
         $biz = (new Biz())->createBiz($request);
 
-        if ($request->has('file_path')) {
-            $file = $request->file('file_path');
+        if ($request->has('file')) {
+            $file = $request->file('file');
 
             $originalName = $file->getClientOriginalName();
 
