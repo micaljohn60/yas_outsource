@@ -1,6 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
+    <button type="submit" id="button" class="btn btn-primary">Submit</button>
     <form action="{{ route('biz.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -34,7 +35,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror --}}
-                        <input class="" type="text" placeholder="Company Name*" name="name">
+                        <input class="" id="companyName" type="text" placeholder="Company Name*" name="name">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -130,7 +131,8 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <form class="form" action="{{ route('biz.store') }}" method="post"  name="file" files="true" enctype="multipart/form-data" >
+                        <form class="form" action="{{ route('biz.store') }}" method="post" name="file"
+                            files="true" enctype="multipart/form-data">
                             @csrf
                             <div class="fv-row">
                                 <div class="dropzone" id="kt_dropzonejs_example_1">
@@ -236,22 +238,39 @@
 
 
     <script>
+
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
             url: '{{ route('biz.store') }}', // Set the url for your upload script location
             paramName: "biz_img", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
+            autoProcessQueue: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            accept: function(file, done) {
-                if (file.name == "wow.jpg") {
-                    done("Naha, you don't.");
-                } else {
-                    done();
-                }
+            init: function() {
+
+                var myDropzone = this;
+
+                
+                $("#button").click(function(e) {
+                    e.preventDefault();
+                    
+                    myDropzone.processQueue();
+                });
+
+                this.on('sending', function(file, xhr, formData) {
+                    var companyName = document.getElementById("companyName").value;
+                    formData.append("name",companyName)
+                    // Append all form inputs to the formData Dropzone will POST
+                    var data = $('#frmTarget').serializeArray();
+                    $.each(data, function(key, el) {
+                        formData.append(el.name, el.value);
+                    });
+                });
             }
+
         });
     </script>
 
