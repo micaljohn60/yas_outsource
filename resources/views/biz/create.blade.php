@@ -129,24 +129,8 @@
 
                     </div>
 
-                    <div class="col-lg-12">
-                        <form class="form" action="{{ route('biz.store') }}" method="post"  name="file" files="true" enctype="multipart/form-data" >
-                            @csrf
-                            <div class="fv-row">
-                                <div class="dropzone" id="kt_dropzonejs_example_1">
-                                    <div class="dz-message needsclick">
-                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                                        <div class="ms-4">
-                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.
-                                            </h3>
-                                            <span class="fs-7 fw-semibold text-gray-400">Upload up to 10 files</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <label for="formFileMultiple" class="form-label">Images</label>
+                    <input class="form-control" type="file" name="biz_img[]" id="formFileMultiple" multiple>
 
                 </div>
             </div>
@@ -235,25 +219,42 @@
 
 
 
-    <script>
+    {{-- <script>
+
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
             url: '{{ route('biz.store') }}', // Set the url for your upload script location
             paramName: "biz_img", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
+            autoProcessQueue: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            accept: function(file, done) {
-                if (file.name == "wow.jpg") {
-                    done("Naha, you don't.");
-                } else {
-                    done();
-                }
+            init: function() {
+
+                var myDropzone = this;
+
+                
+                $("#button").click(function(e) {
+                    e.preventDefault();
+                    
+                    myDropzone.processQueue();
+                });
+
+                this.on('sending', function(file, xhr, formData) {
+                    var companyName = document.getElementById("companyName").value;
+                    formData.append("name",companyName)
+                    // Append all form inputs to the formData Dropzone will POST
+                    var data = $('#frmTarget').serializeArray();
+                    $.each(data, function(key, el) {
+                        formData.append(el.name, el.value);
+                    });
+                });
             }
+
         });
-    </script>
+    </script> --}}
 
 
 

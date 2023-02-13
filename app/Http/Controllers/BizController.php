@@ -25,38 +25,52 @@ class BizController extends Controller
     {
         $biz = (new Biz())->createBiz($request);
 
-        if ($request->has('file')) {
-            $file = $request->file('file');
+        // if ($request->has('file')) {
+        //     $file = $request->file('file');
 
-            $originalName = $file->getClientOriginalName();
+        //     $originalName = $file->getClientOriginalName();
 
-            $sellerId = auth()->user()->id;
+        //     $sellerId = auth()->user()->id;
 
-            $path = 'biz/seller_' . $sellerId . '/' . $originalName;
+        //     $path = 'biz/seller_' . $sellerId . '/' . $originalName;
 
-            Storage::put($path, file_get_contents($file));
+        //     Storage::put($path, file_get_contents($file));
 
-            $biz->update([
-                'file_path' => $path,
-            ]);
-        }
+        //     $biz->update([
+        //         'file_path' => $path,
+        //     ]);
+        // }
 
-        if ($request->has('biz_img')) {
-            $file = $request->file('biz_img');
+        
+            foreach ($request->file('biz_img') as $imagefile) {
+                
+                $filename = $imagefile->getClientOriginalName();
+                $imagefile-> move(public_path('storage/biz_images'), $filename);
+                $sellerId = auth()->user()->id;
+                // $path = 'biz/img/seller_' . $sellerId . '/' . $filename;
+                // Storage::put($path, file_get_contents($imagefile));
+                BizImage::create([
+                    'biz_id' => $biz->id,
+                    'img_path' => 'storage/biz_images'.$filename
+                ]);
+            }
 
-            $originalName = $file->getClientOriginalName();
 
-            $sellerId = auth()->user()->id;
+            // $file = $request->file('biz_img');
 
-            $path = 'biz/img/seller_' . $sellerId . '/' . $originalName;
+            // $originalName = $file->getClientOriginalName();
 
-            Storage::put($path, file_get_contents($file));
+            // $sellerId = auth()->user()->id;
 
-            BizImage::create([
-                'biz_id' => $biz->id,
-                'img_path' => $path
-            ]);
-        }
+            // $path = 'biz/img/seller_' . $sellerId . '/' . $originalName;
+
+            // Storage::put($path, file_get_contents($file));
+
+            // BizImage::create([
+            //     'biz_id' => $biz->id,
+            //     'img_path' => $path
+            // ]);
+        
 
 
 
