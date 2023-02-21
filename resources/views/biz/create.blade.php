@@ -246,6 +246,7 @@
             maxFilesize: 10, // MB
             addRemoveLinks: true,
             autoProcessQueue: false,
+            autoProcessQueue: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -271,8 +272,9 @@
                 });
             }
 
+
         });
-    </script>
+    </script> --}}
 
 
 
