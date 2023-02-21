@@ -43,9 +43,14 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pricinglists') }}">Pricings</a>
+                            <a class="nav-link" href="{{ route('adminlogin') }}">Admin Login</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('adminDashboard') }}">Admin Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pendingBiz') }}">Incoming Biz Lists</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('biz.index') }}">Find Bizs</a>
                         </li>
