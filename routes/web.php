@@ -68,3 +68,6 @@ Route::get('/bizs/{biz}', [BizController::class, 'show'])->name('biz.show');
 Route::get('/bizs-by-user', [BizController::class, 'getBizByUser']); // get biz lists by users
 Route::get('/latest-bizs', [BizController::class, 'getLatest']); // get latest biz lists
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index'); // get notification list
+
+
+// just testing
