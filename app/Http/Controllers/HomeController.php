@@ -33,6 +33,11 @@ class HomeController extends Controller
         }
     }
 
+    public function pricings()
+    {
+        return view('pricings.lists');
+    }
+
     public function adminLogin()
     {
         return view('admin.auth.login');
