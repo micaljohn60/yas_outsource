@@ -51,21 +51,23 @@ class HomeController extends Controller
     public function pendingBizLists()
     {
         $bizs = Biz::pendingList()->latest()->get();
-        $status = "pending";
-        return view('admin.biz.bizlists', compact('bizs','status'));
+        $status = 'pending';
+
+        return view('admin.biz.bizlists', compact('bizs', 'status'));
     }
 
     public function acceptedBizLists()
     {
-        $bizs = Biz::where(["status"=>"onsale"])->get();
-        $status = "onsale";
-        return view('admin.biz.bizlists', compact('bizs','status'));
+        $bizs = Biz::where(['status' => 'onsale'])->get();
+        $status = 'onsale';
+
+        return view('admin.biz.bizlists', compact('bizs', 'status'));
     }
 
     public function publishBiz($id)
     {
+        Biz::find($id)->update(['status' => 'onsale']);
 
-        Biz::find($id)->update(['status' => "onsale"]);
         return redirect()->route('pendingBiz');
     }
 }

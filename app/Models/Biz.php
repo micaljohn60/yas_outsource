@@ -30,7 +30,7 @@ class Biz extends Model
         'language',
         'years_est',
         'file_path',
-        'currency'
+        'currency',
     ];
 
     public function createBiz($request)
@@ -54,7 +54,7 @@ class Biz extends Model
             'language' => $request->language,
             'years_est' => $request->years_est,
             'file_path' => $request->file_path,
-            'currency' => $request->currency
+            'currency' => $request->currency,
         ]);
     }
 
@@ -87,6 +87,7 @@ class Biz extends Model
     {
         return $query->where('status', '!=', 'pending');
     }
+
     public function scopePendingList($query)
     {
         return $query->where('status', 'pending');
