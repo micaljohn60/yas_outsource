@@ -41,38 +41,32 @@ class BizController extends Controller
         //     ]);
         // }
 
-        
-            foreach ($request->file('biz_img') as $imagefile) {
-                
-                $filename = $imagefile->getClientOriginalName();
-                $imagefile-> move(public_path('storage/biz_images'), $filename);
-                $sellerId = auth()->user()->id;
-                // $path = 'biz/img/seller_' . $sellerId . '/' . $filename;
-                // Storage::put($path, file_get_contents($imagefile));
-                BizImage::create([
-                    'biz_id' => $biz->id,
-                    'img_path' => 'storage/biz_images'.$filename
-                ]);
-            }
+        foreach ($request->file('biz_img') as $imagefile) {
+            $filename = $imagefile->getClientOriginalName();
+            $imagefile->move(public_path('storage/biz_images'), $filename);
+            $sellerId = auth()->user()->id;
+            // $path = 'biz/img/seller_' . $sellerId . '/' . $filename;
+            // Storage::put($path, file_get_contents($imagefile));
+            BizImage::create([
+                'biz_id' => $biz->id,
+                'img_path' => 'storage/biz_images'.$filename,
+            ]);
+        }
 
+        // $file = $request->file('biz_img');
 
-            // $file = $request->file('biz_img');
+        // $originalName = $file->getClientOriginalName();
 
-            // $originalName = $file->getClientOriginalName();
+        // $sellerId = auth()->user()->id;
 
-            // $sellerId = auth()->user()->id;
+        // $path = 'biz/img/seller_' . $sellerId . '/' . $originalName;
 
-            // $path = 'biz/img/seller_' . $sellerId . '/' . $originalName;
+        // Storage::put($path, file_get_contents($file));
 
-            // Storage::put($path, file_get_contents($file));
-
-            // BizImage::create([
+        // BizImage::create([
             //     'biz_id' => $biz->id,
             //     'img_path' => $path
-            // ]);
-        
-
-
+        // ]);
 
         // return 'success';
         return redirect()->route('seller.dashboard')->with('message', 'Biz Created Successfully');
@@ -80,27 +74,29 @@ class BizController extends Controller
 
     public function edit(Biz $biz)
     {
-        if ($biz->status != "pending") {
+        if ($biz->status != 'pending') {
             return redirect()->route('biz.index');
         }
         $view = 'biz.edit'; // need to add FE
+
         return view($view, compact('biz'));
     }
 
     public function update(StoreBiz $biz)
     {
-        if ($biz->status == "pending") {
+        if ($biz->status == 'pending') {
             (new Biz())->updateBiz($biz);
 
             return redirect()->back()->with('message', 'Biz updated Successfully');
         }
-        return redirect()->back()->with('message', 'Biz cannot update!');
 
+        return redirect()->back()->with('message', 'Biz cannot update!');
     }
 
     public function delete($id)
     {
         Biz::find($id)->delete();
+
         return redirect()->back()->with('message', 'Biz Deleted Successfully');
     }
 

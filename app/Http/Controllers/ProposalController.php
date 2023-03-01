@@ -98,6 +98,7 @@ class ProposalController extends Controller
         // return 'return redirect back with success message'; //! FE need to redirect redirect back with success message
         return redirect()->back()->with('message', 'Proposal Accept Successfully');
     }
+
     public function declineBiz(Proposal $proposal, Request $request)
     {
         $biz = Biz::findOrFail($request->biz_id);

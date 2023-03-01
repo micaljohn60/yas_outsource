@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Services\PricePlanService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -91,6 +92,11 @@ class RegisterController extends Controller
                 'cvc' => $data['cvc'],
                 'user_id' => $user->id,
             ]);
+            $plan = new \stdClass();
+            $plan->price_plan_id = $data['price_plan_id'];
+            $plan->duration = 'monthly';
+            $plan->user_id = $user->id;
+            app(PricePlanService::class)->insertPricePlan($plan);
         }
 
         return $user;
