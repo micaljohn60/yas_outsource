@@ -2,33 +2,35 @@
 
 @section('dashboard_content')
 
-    <div class="container-fluid">
-        <form method="POST" action="{{ route('proposal.store') }}">
-            @csrf
-            <div class="d-flex justify-content-between">
-                <h3>Create New Preposal</h3>
-                <input type="submit" value="Create +" class="btn btn-primary"/>
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="proposalName" placeholder="Enter Proposal Name" name="title">
+    <div class="p-4 sm:ml-64 px-16 py-6 md:col-span-5 lg:col-span-7 bg-gray-100 h-screen">
+        <div class="">
+            <form method="POST" action="{{ route('proposal.store') }}">
+                @csrf
+                <div class="flex justify-between mt-10">
+                    <h1 class="text-gray-600 text-2xl font-bold">Create New Preposal</h1>
+                    <input type="submit" value="Create +" class="bg-main p-3 text-white font-bold rounded-md hover:cursor-pointer checked:bg-secondary-400 hover:bg-secondary-200"/>
+                </div>
+    
+                <div class="form-group">
+                    <input type="text" class="rounded-md focus:border-main focus:ring-main" id="proposalName" placeholder="Enter Proposal Name" name="title">
+                    
+                </div>
+                <div id="toolbar" class="mt-3 ">
+                    {{-- <button class="ql-bold">Bold</button>
+                    <button class="ql-italic">Italic</button> --}}
+                  </div>
+                  
+                  <!-- Create the editor container -->
+                  <div id="editor" class="h-screen">
+                    <p id="p">Hello World!</p>
+                  </div>
+    
+                  <input type="hidden" name="description" id="proposal_text">
+    
                 
-            </div>
-            <div id="toolbar" class="mt-3">
-                {{-- <button class="ql-bold">Bold</button>
-                <button class="ql-italic">Italic</button> --}}
-              </div>
-              
-              <!-- Create the editor container -->
-              <div id="editor">
-                <p id="p">Hello World!</p>
-              </div>
-
-              <input type="hidden" name="description" id="proposal_text">
-
-            
-
-        </form>
+    
+            </form>
+        </div>
     </div>
 
     {{-- <button id="click">Click Me</button> --}}

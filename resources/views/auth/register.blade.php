@@ -134,10 +134,11 @@
                                 @endif --}}
 
                             </div>
-
-                            <button type="submit" @if($isFreeUser) class="btn btn-block btn-primary" @else class="d-none" @endif >
+                            <button type="submit" class="bg-main hover:bg-gray-700 text-white font-bold py-4 px-4 rounded w-full">
                                 {{ __('Register') }}
                             </button>
+
+                            
 
 
                     </div>
@@ -174,6 +175,7 @@
                             <img src={{ asset('images/mastercard.jpg') }}  id="mastercard">
                             <img src={{ asset('images/amex.jpg') }}  id="amex">
                         </div>
+                        
                         <div class="form-group" id="pay-now">
                             <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
                         </div>

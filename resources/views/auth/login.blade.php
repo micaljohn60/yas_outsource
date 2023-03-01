@@ -82,7 +82,7 @@
 
                             </div>
 
-                            <button type="submit" class="btn btn-block btn-primary">
+                            <button type="submit" class="bg-main hover:bg-gray-700 text-white font-bold py-4 px-4 rounded w-full">
                                 {{ __('Login') }}
                             </button>
 

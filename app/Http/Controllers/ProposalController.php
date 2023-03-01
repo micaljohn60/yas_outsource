@@ -41,8 +41,8 @@ class ProposalController extends Controller
     public function show(Proposal $proposal, Request $request) // this would be edit
     {
         $biz = Biz::findOrFail($request->biz_id);
-
-        return view('proposal.show', compact('proposal', 'biz')); //! frontend need to replace with return view('..',compact('proposal'));
+        return compact('proposal', 'biz');
+        //return view('proposal.show', compact('proposal', 'biz')); //! frontend need to replace with return view('..',compact('proposal'));
     }
 
     public function uploadProposalToBiz(Request $request)

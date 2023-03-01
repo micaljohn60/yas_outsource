@@ -1,96 +1,95 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="card text-white primary-bg mb-3" style="max-width: 18rem;">
-                <div class="card-body d-flex justify-content-center align-items-center">
-                    <a href="{{route('biz.index')}}">
-                        Find Biz
-                    </a>
+    <div class="p-4 sm:ml-64 px-16 py-6 md:col-span-5 lg:col-span-7 bg-gray-100 h-screen">
+
+        <div class="flex gap-2 text-gray-700">
+                    
+            <div class="bg-secondary-300 p-6 rounded-lg shadow-sm w-3/12 sm:w-5/12 h-3/5">
+                <div class="flex flex-col justify-center items-center">
+                    <div class="">
+                        <i class="fa-regular fa-folder-closed"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-xl">Find Bizs</p>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
+
+            
+        
 
     </div>
-    <h3 class="font-weight-bold">My Bits</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Biz ID</th>
-                <th>Proposal Name</th>
-                <th>Go To Porposal</th>
-              
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($myBizProposals as $key => $myBizProposal)
-                <tr>
-                    <td>
-                        {{$key+1}}
-                    </td>
-                    <td>
-                        {{$myBizProposal->biz->id}}
-                    </td>
-                    <td>
-                        {{$myBizProposal->proposal->title ?? "File"}}
-                    </td>
-                    <td>
-                        <a href="
-                        {{
-                        empty($myBizProposal->proposal_id)
-                        ?                  
-                        url('/').'/storage/'.$myBizProposal->proposal_file_path                        
-                        : 
-                        route('proposal.show',$myBizProposal->proposal->id ?? "")
-                        }}"
 
-                        {{empty($myBizProposal->proposal_id) ? "download" : ""}}>
-                        {{empty($myBizProposal->proposal_id) ? "download" : "Go to Proposal"}}
-                    </a>
-                        
-                    </td>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
-                    {{-- <td >
-                       <p ><small id="time"> {{$biz->created_at}}</small> </p>
-                    </td> --}}
-                    {{-- <td>
-                        <button type="button" class="btn btn-link text-decoration-none">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button type="button" class="btn btn-link text-decoration-none">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td> --}}
-                </tr>
-            @endforeach
-            
-        </tbody>
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Index
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Biz Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Proposal Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Go To Proposal
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Bit Price
+                        </th>
 
-    </table>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($myBizProposals as $key => $myBizProposal)
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
-    </table>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $key + 1 }}
+                            </th>
+                            <td class="px-6 py-4 text-gray-900 font-medium">
+                                {{ $myBizProposal->biz->id }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $myBizProposal->proposal->title ?? 'File' }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="
+                            {{ empty($myBizProposal->proposal_id)
+                                ? url('/') . '/storage/' . $myBizProposal->proposal_file_path
+                                : route('proposal.show', $myBizProposal->proposal->id ?? '') }}"
+                                    {{ empty($myBizProposal->proposal_id) ? 'download' : '' }}>
+                                    {{ empty($myBizProposal->proposal_id) ? 'download' : 'Go to Proposal' }}
+                                </a>
+                            </td>
+                            <td class="px-6 py-4">
+                                 100000
+                            </td>
+
+                        </tr>
+                    @endforeach
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+                </tbody>
+            </table>
+            {{-- <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
+                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span
+                        class="font-semibold text-gray-900 dark:text-white">1-{!! $bizs->count() !!}</span> of <span
+                        class="font-semibold text-gray-900 dark:text-white">{!! $bizs->total() !!}</span></span>
+                <ul class="inline-flex items-center -space-x-px">
 
+                    {!! $myBizProposals->links() !!}
 
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable();
-        $('#proposal').DataTable();
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
+                </ul>
+            </nav> --}}
+        </div>
 
-
-</script>
-</div>
+        
 @endsection

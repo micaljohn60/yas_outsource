@@ -4,11 +4,13 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js"
+    
   ],
   theme: {
     extend: {
       colors:{
-        primary:'#05C19C',
+        main:'#05C19C',
         secondary: {
           100: '#E2E2D5',
           200: '#888883',
@@ -19,5 +21,8 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('flowbite/plugin')
+  ],
 }
