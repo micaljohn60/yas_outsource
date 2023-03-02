@@ -44,7 +44,7 @@
                         <span>---------------------</span>
                     </li>
                 </ul>
-                <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                <a href="{{route('register',['ptype'=>"free","utype"=>"seller"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
             </div>
 
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -81,7 +81,7 @@
                         <span>---------------------</span>
                     </li>
                 </ul>
-                <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                <a href="{{route('register',['ptype'=>"pro","utype"=>"seller"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
             </div>
 
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -118,7 +118,7 @@
                         <span>---------------------</span>
                     </li>
                 </ul>
-                <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                <a href="{{route('register',['ptype'=>"premium","utype"=>"seller"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
             </div>
         </div>
        </div>
@@ -168,7 +168,7 @@
                          <span>Can't Send message to Seller</span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"free","utype"=>"buyer"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
  
              <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -205,7 +205,7 @@
                          <span>Avaliable for Direct Buyer Opition</span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-green-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"pro","utype"=>"buyer"])}}" class="text-white bg-main hover:bg-green-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
  
              <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -242,7 +242,7 @@
                          <span>Avaliable for All Selling Opitions </span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"premium","utype"=>"buyer"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
          </div>
         </div>
@@ -291,7 +291,7 @@
                          <span>---------------------</span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"free","utype"=>"expert"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
  
              <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -328,7 +328,7 @@
                          <span>---------------------</span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"pro","utype"=>"expert"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
  
              <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
@@ -365,7 +365,7 @@
                          <span>---------------------</span>
                      </li>
                  </ul>
-                 <a href="#" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
+                 <a href="{{route('register',['ptype'=>"premium","utype"=>"expert"])}}" class="text-white bg-main hover:bg-gray-600 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Get started</a>
              </div>
          </div>
         </div>

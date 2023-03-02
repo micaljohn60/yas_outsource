@@ -49,17 +49,24 @@
                   <a href="#responsive-header" class="block text-white mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-600  mr-4">
                     Buyer
                   </a>
-                  <a href="#responsive-header" class="block text-white mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-600 ">
+                  <a href="#responsive-header" class="block text-white mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-600 mr-4">
                     Expert
+                  </a>
+                  <a href="{{route('biz.index')}}" class="block text-white mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-600 ">
+                    Find Bizs
                   </a>
                 </div>
                 <div>
                   
                   @guest
+                      @if(Route::has('register'))
+                      <a href="{{ route('pricinglists') }}" class="inline-block text-lg font-semibold px-4 py-2 leading-none text-white  border-white hover:border-transparen hover:text-gray-600 mt-4 lg:mt-0">Register</a>
+                      @endif
+                     
                       @if (Route::has('login'))
                       <a href="{{ route('login') }}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-4 lg:mt-0">Login</a>
                       
-                   @endif
+                       @endif
                    @else
                   <a href="
                   {{Auth::user()->type->value == 'buyer' ? route('buyer.dashboard') : route('seller.dashboard')}}

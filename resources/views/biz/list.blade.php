@@ -1,7 +1,42 @@
 @extends('layouts.user_side_bar')
 
 @section('user_content')
-<div class="container">
+<div class="container mx-auto mt-4">
+    
+
+    <div id="myContent">
+        <div class="p-4 rounded-lg bg-gray-200 dark:bg-gray-800" id="profile" role="tabpanel"
+            aria-labelledby="profile-tab">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                    @foreach ($bizs as $key=> $biz)
+                    <div class="p-2 bg-white border border-gray-200 rounded lg drop-shadow-md ">
+                        <div class="flex items-center">
+                            <div id={{"leading".$key}} class="bg-orange-400 w-12 h-12 flex justify-center items-center rounded-md uppercase font-bold text-white">{{$biz->name[0]}}
+                            </div>
+                            <div class="ml-4">
+                                <p class="font-bold text-lg">{{ $biz->name }}</p>
+                                <p class="text-sm text-gray-700 mt-1 line-clamp-2 w-56">{{ $biz->biz_detail }}</p>
+                                <div class="flex items-center hover:text-blue-600">
+                                    <a class="lowercase text-xs hover:cursor-pointer hover:text-gray-600 mt-2">See detail </a>
+                                    <i class="fa-solid fa-arrow-up-right-from-square fa-xs px-1 pt-2 hover:text-blue-600"></i>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>           
+                             
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {{-- <div class="container">
     <div class="row">
     @foreach ($bizs as $biz)
     <div class="col-lg-3">
@@ -22,6 +57,12 @@
     @endforeach
 </div>
 
-</div>
-
+</div> --}}
+<script>
+    var colors = ["bg-orange-400", "bg-cyan-400", "bg-teal-500"]
+    for (let i = 0; i < 6; i++) {
+    var element = document.getElementById(`leading${i}`);
+    element.classList.add(colors[Math.floor(Math.random()*colors.length)]);
+    }
+</script>
 @endsection
