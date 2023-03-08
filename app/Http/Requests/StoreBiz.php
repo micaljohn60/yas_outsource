@@ -25,8 +25,8 @@ class StoreBiz extends FormRequest
     {
         return [
             'name' => ['required'],
-            'phone' => ['required'],
-            'register_number' => ['required'],
+            'phone' => ['required','numeric'],
+            'register_number' => ['required','numeric'],
             'address' => ['required'],
             'reason_sale' => ['required'],
             'biz_detail' => ['required'],

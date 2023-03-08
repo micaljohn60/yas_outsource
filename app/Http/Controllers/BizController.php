@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
 use App\Models\BizImage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BizController extends Controller
@@ -14,9 +15,9 @@ class BizController extends Controller
      *
      * @return Biz[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bizs = Biz::publishList()->latest()->get();
+        $bizs = Biz::filter()->publishList()->latest()->get();
 
         return view('biz.list', compact('bizs'));
     }
@@ -41,9 +42,9 @@ class BizController extends Controller
         //     ]);
         // }
 
-        
+
             foreach ($request->file('biz_img') as $imagefile) {
-                
+
                 $filename = $imagefile->getClientOriginalName();
                 $imagefile-> move(public_path('storage/biz_images'), $filename);
                 $sellerId = auth()->user()->id;
@@ -70,7 +71,7 @@ class BizController extends Controller
             //     'biz_id' => $biz->id,
             //     'img_path' => $path
             // ]);
-        
+
 
 
 
