@@ -132,7 +132,7 @@ class BizController extends Controller
 
     public function getLatest()
     {
-        $bizs = Biz::publishList()->latest()->take(7)->get();
+        $bizs = Biz::filter()->publishList()->latest()->take(7)->get();
 
         return view('welcome', compact('bizs'));
     }
