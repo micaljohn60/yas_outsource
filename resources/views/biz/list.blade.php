@@ -8,6 +8,11 @@
         <div class="p-4 rounded-lg bg-gray-200 dark:bg-gray-800" id="profile" role="tabpanel"
             aria-labelledby="profile-tab">
             <div class="container mx-auto">
+                @if(count($bizs) <=0) 
+                <div class="text-center text-red-500 text-xl">
+                    No Biz Found
+                </div>
+                @else
                 <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
                     @foreach ($bizs as $key=> $biz)
                     <div class="p-2 bg-white border border-gray-200 rounded lg drop-shadow-md ">
@@ -31,6 +36,9 @@
                     @endforeach
 
                 </div>
+
+                @endif
+                
             </div>
         </div>
     </div>

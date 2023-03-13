@@ -60,7 +60,7 @@
                   
                   @guest
                       @if(Route::has('register'))
-                      <a href="{{ route('pricinglists') }}" class="inline-block text-lg font-semibold px-4 py-2 leading-none text-white  border-white hover:border-transparen hover:text-gray-600 mt-4 lg:mt-0">Register</a>
+                      <a href="{{ route('price-plan.index') }}" class="inline-block text-lg font-semibold px-4 py-2 leading-none text-white  border-white hover:border-transparen hover:text-gray-600 mt-4 lg:mt-0">Register</a>
                       @endif
                      
                       @if (Route::has('login'))

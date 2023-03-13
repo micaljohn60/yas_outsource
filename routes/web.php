@@ -22,7 +22,7 @@ Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'adm
 Route::get('/admin/pendingbizs', [App\Http\Controllers\HomeController::class, 'pendingBizLists'])->name('pendingBiz');
 Route::get('/admin/acceptedbizs', [App\Http\Controllers\HomeController::class, 'acceptedBizLists'])->name('acceptedBiz');
 Route::post('/admin/publishbizs/{id}', [App\Http\Controllers\HomeController::class, 'publishBiz'])->name('biz.published');
-Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricing');
+Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricinglists');
 
 Auth::routes();
 

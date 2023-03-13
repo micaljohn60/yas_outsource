@@ -42,19 +42,6 @@ class BizController extends Controller
         //     ]);
         // }
 
-<<<<<<< HEAD
-        foreach ($request->file('biz_img') as $imagefile) {
-            $filename = $imagefile->getClientOriginalName();
-            $imagefile->move(public_path('storage/biz_images'), $filename);
-            $sellerId = auth()->user()->id;
-            // $path = 'biz/img/seller_' . $sellerId . '/' . $filename;
-            // Storage::put($path, file_get_contents($imagefile));
-            BizImage::create([
-                'biz_id' => $biz->id,
-                'img_path' => 'storage/biz_images'.$filename,
-            ]);
-        }
-=======
 
             foreach ($request->file('biz_img') as $imagefile) {
 
@@ -69,7 +56,6 @@ class BizController extends Controller
                 ]);
             }
 
->>>>>>> 99dd3ce8cf8a458882eaec5491fcf42b824e82f9
 
         // $file = $request->file('biz_img');
 
@@ -84,14 +70,10 @@ class BizController extends Controller
         // BizImage::create([
             //     'biz_id' => $biz->id,
             //     'img_path' => $path
-<<<<<<< HEAD
-        // ]);
-=======
             // ]);
 
 
 
->>>>>>> 99dd3ce8cf8a458882eaec5491fcf42b824e82f9
 
         // return 'success';
         return redirect()->route('seller.dashboard')->with('message', 'Biz Created Successfully');
