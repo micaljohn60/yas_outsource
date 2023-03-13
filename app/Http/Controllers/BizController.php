@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBiz;
 use App\Models\Biz;
 use App\Models\BizImage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BizController extends Controller
@@ -14,9 +15,9 @@ class BizController extends Controller
      *
      * @return Biz[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bizs = Biz::publishList()->latest()->get();
+        $bizs = Biz::filter()->publishList()->latest()->get();
 
         return view('biz.list', compact('bizs'));
     }
@@ -41,6 +42,7 @@ class BizController extends Controller
         //     ]);
         // }
 
+<<<<<<< HEAD
         foreach ($request->file('biz_img') as $imagefile) {
             $filename = $imagefile->getClientOriginalName();
             $imagefile->move(public_path('storage/biz_images'), $filename);
@@ -52,6 +54,22 @@ class BizController extends Controller
                 'img_path' => 'storage/biz_images'.$filename,
             ]);
         }
+=======
+
+            foreach ($request->file('biz_img') as $imagefile) {
+
+                $filename = $imagefile->getClientOriginalName();
+                $imagefile-> move(public_path('storage/biz_images'), $filename);
+                $sellerId = auth()->user()->id;
+                // $path = 'biz/img/seller_' . $sellerId . '/' . $filename;
+                // Storage::put($path, file_get_contents($imagefile));
+                BizImage::create([
+                    'biz_id' => $biz->id,
+                    'img_path' => 'storage/biz_images'.$filename
+                ]);
+            }
+
+>>>>>>> 99dd3ce8cf8a458882eaec5491fcf42b824e82f9
 
         // $file = $request->file('biz_img');
 
@@ -66,7 +84,14 @@ class BizController extends Controller
         // BizImage::create([
             //     'biz_id' => $biz->id,
             //     'img_path' => $path
+<<<<<<< HEAD
         // ]);
+=======
+            // ]);
+
+
+
+>>>>>>> 99dd3ce8cf8a458882eaec5491fcf42b824e82f9
 
         // return 'success';
         return redirect()->route('seller.dashboard')->with('message', 'Biz Created Successfully');
@@ -127,7 +152,7 @@ class BizController extends Controller
 
     public function getLatest()
     {
-        $bizs = Biz::publishList()->latest()->take(7)->get();
+        $bizs = Biz::filter()->publishList()->latest()->take(7)->get();
 
         return view('welcome', compact('bizs'));
     }
