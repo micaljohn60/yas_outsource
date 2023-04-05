@@ -70,7 +70,52 @@
                     {{ $biz->biz_detail }}</h1>
                 </p>
 
+                @if(auth()->check())
+                <div class="border border-main rounded-lg mt-10">
+                    <label for="message" class="block mt-4 mx-5 first-letter:text-sm font-medium text-gray-900 dark:text-white">Comment Sections</label>
+    
+    
+                    <div class="h-96 overflow-auto">
+                        <div class="w-full rounded overflow-hidden shadow-sm px-6 py-4">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Anonmyous User</div>
+                                <p class="text-gray-700 text-base">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                                </p>
+                              </div>
+                        </div>
+                        <div class="w-full rounded overflow-hidden shadow-sm px-6 py-4">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Anonmyous User</div>
+                                <p class="text-gray-700 text-base">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                                </p>
+                              </div>
+                        </div>
+                    </div>
+    
+                    
+    
+                    <div>
+                        <div>
+                            
+                            <textarea id="message" placeholder="What is your Opinion on this Biz?..." name="content" rows="4"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                        </div>
+                    </div>
+                   </div>
+                @endif
+
+                @guest
+                <label for="message" class="block mt-4 mx-5 first-letter:text-sm font-medium text-gray-900 dark:text-white">Please Login to make comments</label>
+                @endguest
+
+              
+
             </div>
+
+            
+        
 
             <div class="lg:w-1/5 h-screen flex-grow py-6 mt-3 overflow-auto bg-white rounded-md">
                 <div class="flex justify-center">
@@ -123,8 +168,10 @@
             </div>
 
 
-
         </div>
+
+        
+
 
 
 
