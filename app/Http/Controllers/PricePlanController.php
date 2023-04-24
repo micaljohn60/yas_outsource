@@ -8,6 +8,7 @@ class PricePlanController extends Controller
 {
     public function index()
     {
-        return PricePlan::all();
+        return view("pricings.lists");
+        // return PricePlan::all();
     }
 }
