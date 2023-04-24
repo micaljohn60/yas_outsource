@@ -19,9 +19,9 @@ class PricePlanService
         ]);
     }
 
-    private function calculateExpireDate($plan): string
+    public function calculateExpireDate($duration): string
     {
-        if ($plan->duration === 'monthly') {
+        if ($duration === 'monthly') {
             return Carbon::now()->addMonth()->toDateString();
         }
 

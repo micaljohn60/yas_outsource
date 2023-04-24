@@ -71,6 +71,9 @@ Route::get('/notifications', [NotificationController::class, 'index'])->name('no
 //price plan
 Route::get('/price/plans', [\App\Http\Controllers\PricePlanController::class, 'index'])->name('price-plan.index'); // get price plan list
 
-// just testing
 
 Route::post('/comment',[\App\Http\Controllers\CommentController::class, 'store'])->name('comment.store');
+
+
+Route::get('/profile',[\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+Route::post('/profile/save-changes',[\App\Http\Controllers\ProfileController::class, 'saveChanges'])->name('profile.save');

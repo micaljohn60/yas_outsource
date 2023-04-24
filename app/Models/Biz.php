@@ -101,4 +101,9 @@ class Biz extends Model
     {
         return $this->hasMany(Comment::class,'biz_id','id')->latest();
     }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_id', 'id');
+    }
 }

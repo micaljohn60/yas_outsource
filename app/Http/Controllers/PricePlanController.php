@@ -8,7 +8,12 @@ class PricePlanController extends Controller
 {
     public function index()
     {
-        return view("pricings.lists");
-        // return PricePlan::all();
+        $sellerPlan = PricePlan::where("type", "seller")->get();
+
+        $buyerPlan = PricePlan::where("type", "buyer")->get();
+
+        $expertPlan = PricePlan::where("type", "expert")->get();
+
+        return view("pricings.lists", compact('sellerPlan', 'buyerPlan', 'expertPlan'));
     }
 }
