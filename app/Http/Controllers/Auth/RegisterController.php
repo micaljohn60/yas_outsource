@@ -6,9 +6,12 @@ use App\Enums\UserAccessType;
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\PricePlan;
 use App\Models\User;
+use App\Models\UserPricePlan;
 use App\Providers\RouteServiceProvider;
 use App\Services\PricePlanService;
+use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,6 +67,8 @@ class RegisterController extends Controller
             'card_holder_name' => 'required_if:access_type,==,PREMIUM',
             // 'expire_date' => 'required_if:access_type,==,PREMIUM',
             'cvc' => 'required_if:access_type,==,PREMIUM',
+            'planId' => 'required',
+            'duration' => 'required'
         ]);
     }
 
@@ -75,6 +80,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data): User
     {
+        if(! PricePlan::where('id',(int) $data['planId'])->first())
+        {
+            throw new NotFound("Plan ID Invalid");
+        }
+
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -92,12 +102,22 @@ class RegisterController extends Controller
                 'cvc' => $data['cvc'],
                 'user_id' => $user->id,
             ]);
-            $plan = new \stdClass();
-            $plan->price_plan_id = $data['price_plan_id'];
-            $plan->duration = 'monthly';
-            $plan->user_id = $user->id;
-            app(PricePlanService::class)->insertPricePlan($plan);
+//            $plan = new \stdClass();
+//            $plan->price_plan_id = $data['price_plan_id'];
+//            $plan->duration = 'monthly';
+//            $plan->user_id = $user->id;
+//            app(PricePlanService::class)->insertPricePlan($plan);
         }
+
+        $pricePlan = PricePlan::findOrFail((int) $data['planId']);
+
+        UserPricePlan::create([
+            'price_plan_id' => $pricePlan->id,
+            'user_id' => $user->id,
+            'duration' => $data["duration"],
+            'expired_at' => app(PricePlanService::class)->calculateExpireDate($data["duration"]),
+            'is_active' => true,
+        ]);
 
         return $user;
     }

@@ -113,6 +113,8 @@
                                     <div class="mb-3">
                                         <label class="text-lg text-gray-600 font-semibold">You are creating account as : {{$userType}}</label>
                                         <input type="hidden" class="" value="{{$userType}}" name="type" />
+                                        <input type="hidden" class="" value="{{request()->planid}}" name="planId" />
+                                        <input type="hidden" class="" value="monthly" name="duration" />
                                     </div>
                                     {{-- <select class="form-select" aria-label="Default select example" name="type">
                                         <option value="buyer">Buyer</option>
