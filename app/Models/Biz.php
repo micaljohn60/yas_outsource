@@ -96,4 +96,9 @@ class Biz extends Model
     {
         return $query->where('status', 'pending');
     }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class,'biz_id','id')->latest();
+    }
 }

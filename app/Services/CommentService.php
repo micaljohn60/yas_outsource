@@ -12,7 +12,7 @@ class CommentService
         return new self();
     }
 
-    public function send(string $content, int $receiver_id, int $sender_id = null, int $biz_id = null)
+    public function store(string $content, int $receiver_id, int $sender_id = null, int $biz_id = null)
     {
         return Comment::create([
             'sender_id' => $sender_id ?? auth()->user()->id,

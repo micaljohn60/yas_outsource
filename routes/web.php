@@ -72,3 +72,5 @@ Route::get('/notifications', [NotificationController::class, 'index'])->name('no
 Route::get('/price/plans', [\App\Http\Controllers\PricePlanController::class, 'index'])->name('price-plan.index'); // get price plan list
 
 // just testing
+
+Route::post('/comment',[\App\Http\Controllers\CommentController::class, 'store'])->name('comment.store');

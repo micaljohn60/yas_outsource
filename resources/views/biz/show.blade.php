@@ -22,10 +22,10 @@
 
                     </h1>
                 </div>
-                
+
                 <hr class="h-px my-3 bg-gray-400 border-0 dark:bg-gray-700">
 
-                
+
                 <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
                     <li class="w-full">
                         <button id="stats-tab" data-tabs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Wish Sale Start Date</button>
@@ -71,51 +71,67 @@
                 </p>
 
                 @if(auth()->check())
-                <div class="border border-main rounded-lg mt-10">
+                <form action="{{route('comment.store')}}" method="POST">
+                    @csrf
+                    <div class="border border-main rounded-lg mt-10">
                     <label for="message" class="block mt-4 mx-5 first-letter:text-sm font-medium text-gray-900 dark:text-white">Comment Sections</label>
-    
-    
+
+
                     <div class="h-96 overflow-auto">
-                        <div class="w-full rounded overflow-hidden shadow-sm px-6 py-4">
-                            <div class="px-6 py-4">
-                                <div class="font-bold text-xl mb-2">Anonmyous User</div>
-                                <p class="text-gray-700 text-base">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                              </div>
-                        </div>
-                        <div class="w-full rounded overflow-hidden shadow-sm px-6 py-4">
-                            <div class="px-6 py-4">
-                                <div class="font-bold text-xl mb-2">Anonmyous User</div>
-                                <p class="text-gray-700 text-base">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                              </div>
-                        </div>
+
+                        @foreach($biz->comments as $comment)
+
+                            <div class="w-full rounded overflow-hidden shadow-sm px-6 py-4">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2">
+                                        {{ $comment->sender->first_name . ' '. $comment->sender->last_name }}
+                                    </div>
+                                    <p class="text-gray-700 text-base">
+                                        {{$comment->content}}
+                                    </p>
+
+                                    <p class="text-gray-700 text-base">
+                                        {{ \Carbon\Carbon::parse($comment->created_at)->format('Y M, d, h:i A')}}
+                                    </p>
+                                </div>
+                            </div>
+
+                        @endforeach
+
+
+
                     </div>
-    
-                    
-    
+
+                    <input type="hidden" name="receiver_id" value="{{$biz->user_id}}">
+                    <input type="hidden" name="biz_id" value="{{$biz->id}}">
+
                     <div>
-                        <div>
-                            
-                            <textarea id="message" placeholder="What is your Opinion on this Biz?..." name="content" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                        <div class="row">
+                            <div class="col">
+                                   <textarea id="message" placeholder="What is your Opinion on this Biz?..." name="content" rows="4"
+                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+
+                            </div>
+
+                            <div class="col">
+                                <button type="submit">Comment</button>
+                            </div>
                         </div>
                     </div>
                    </div>
+                </form>
                 @endif
 
                 @guest
                 <label for="message" class="block mt-4 mx-5 first-letter:text-sm font-medium text-gray-900 dark:text-white">Please Login to make comments</label>
                 @endguest
 
-              
+
 
             </div>
 
-            
-        
+
+
 
             <div class="lg:w-1/5 h-screen flex-grow py-6 mt-3 overflow-auto bg-white rounded-md">
                 <div class="flex justify-center">
@@ -170,7 +186,7 @@
 
         </div>
 
-        
+
 
 
 
