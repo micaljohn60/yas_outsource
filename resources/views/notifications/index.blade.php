@@ -10,10 +10,10 @@
                 <div class="w-full flex flex-col sm:flex-row flex-grow overflow-hidden" onclick='fetchProposal({{$notification->data["biz_id"]}},{{$notification->data["id"]}},{{Auth::user()->type->value == "buyer" ? 1 : 2 }},{{$notification->notifiable_id}})'>
                     <div class="sm:w-1/3 md:1/4 w-full flex-shrink flex-grow-0 pt-4 px-3"> 
                         <div class="sticky top-0  w-full">
-                            <ul class="bg-white h-screen rounded-md flex sm:flex-col overflow-auto content-center ">
+                            <ul class="bg-white h-screen rounded-md flex sm:flex-col overflow-auto content-center lg:w-96 sm:w-screen">
                                 <!-- nav goes here -->
 
-                                <li>
+                                <li class="hidden lg:block">
                                     <a href="#"
                                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -26,7 +26,7 @@
                                     </a>
                                 </li>
 
-                                <li class="mt-3 p-2">
+                                <li class="mt-3 p-2 hidden lg:block">
                                     <a class="  ">
                                         <div id="{{$notification->notifiable_id}}" class="p-2 bg-white hover:bg-gray-200 rounded hover:cursor-pointer">
                                             <div class="flex items-center">
@@ -36,7 +36,7 @@
                                                 </div>
                                                 <div class="ml-4">
                                                     <p  class="text-md line-clamp-1 w-56">{{ Auth::user()->type->value == 'buyer' ? "Your Proposal was Accepted" : "Someone Sent you a Proposal"}}</p>
-                                                    <p  class="text-sm text-gray-700 mt-1 line-clamp-2 w-56">Test</p>
+                                                    <p  class="text-sm text-gray-700 mt-1 line-clamp-2 w-56">Test large screen</p>
 
                                                 </div>
 
@@ -47,10 +47,33 @@
                                     </a>
                                 </li>
 
+                                {{--   For Mobile      --}}
+
+                                 <li class="mt-3 p-2 lg:hidden sm:block">
+                                    <a class="" href="">
+                                        <div id="{{$notification->notifiable_id}}" class="p-2 bg-white hover:bg-gray-200 rounded hover:cursor-pointer">
+                                            <div class="flex items-center">
+                                                <div id={{ 'leading' }}
+                                                    class="bg-orange-400 w-12 h-12 flex justify-center items-center rounded-md uppercase font-bold text-white">
+                                                    t
+                                                </div>
+                                                <div class="ml-4">
+                                                    <p  class="text-md line-clamp-1 w-56">{{ Auth::user()->type->value == 'buyer' ? "Your Proposal was Accepted" : "Someone Sent you a Proposal"}}</p>
+                                                    <p  class="text-sm text-gray-700 mt-1 line-clamp-2 w-56">Test mobile</p>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+
+                                {{--   For Mobile      --}}
+
                             </ul>
                         </div>
                     </div>
-                    <main role="main" class="w-full h-screen flex-grow py-6 mt-3 overflow-auto bg-white rounded-md">
+                    <main role="main" class="w-full h-screen flex-grow py-6 mt-3 overflow-auto bg-white rounded-md hidden lg:block">
                         <!-- content area -->
 
                         <div id="form" class="hidden">
