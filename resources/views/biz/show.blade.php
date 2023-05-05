@@ -6,6 +6,7 @@
         <div class="w-full flex flex-col sm:flex-row flex-grow overflow-hidden">
             <div class="lg:w-9/12 w-full flex-shrink flex-grow-0 pt-4 px-3">
                 <div class="flex justify-between">
+                    {{$biz->user->anonymous == "on" ? "true" : "false"}}
                     <h1 class="text-3xl font-semibold text-gray-700 mb-1">{{ $biz->name }}</h1>
                     <h1 class="text-3xl font-semibold text-gray-700 mb-1 flex items-center">
 
@@ -18,7 +19,7 @@
                                     style="fill: rgb(0, 0, 0);"></path>
                             </svg>
                         @endif
-                        {{ $biz->actual_sale_price }}
+                        {{ $biz->user->anonymous == "on" ? "dont; show" : $biz->actual_sale_price }}
 
                     </h1>
                 </div>

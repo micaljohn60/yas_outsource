@@ -36,7 +36,7 @@
                         <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
                             Document</label>
                         <input type="file" id=""
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: ring-main block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                             placeholder="Company Document*" name="file_path">
                     </div>
     
@@ -45,14 +45,14 @@
                             <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish List
                                 Sale : Start Date</label>
                             <input type="date" id=""
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: ring-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                                 placeholder="Company Document*" name="start_date">
                         </div>
                         <div>
                             <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish List
                                 Sale : End Date</label>
                             <input type="date" id=""
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: ring-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                                 placeholder="Company Document*" name="end_date">
                         </div>
                     </div>
