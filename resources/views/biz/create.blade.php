@@ -3,6 +3,8 @@
 @section('dashboard_content')
     <div class="p-4 sm:ml-64 px-16 py-6 md:col-span-5 lg:col-span-7 bg-gray-100 h-full">
 
+
+
         <div class="bg-white border-gray-300 rounded-lg p-3">
             <form action="{{ route('biz.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -13,7 +15,17 @@
                         class="bg-main p-3 text-white font-bold rounded-md hover:cursor-pointer checked:bg-secondary-400 hover:bg-secondary-200"
                         type="submit" value="Submit" />
                 </div>
-    
+
+                @if (count($errors))
+                    <div class="row m-3" role="alert">
+                        <div class="col-md-12">
+                            @foreach ($errors->all() as $error)
+                                <div class="invalid-feedback p-1 m-1">{!! $error !!}</div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
@@ -30,7 +42,7 @@
                             placeholder="Year Establishment*" name="year_est">
                     </div>
                 </div>
-    
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
@@ -39,7 +51,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                             placeholder="Company Document*" name="file_path">
                     </div>
-    
+
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
                             <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish List
@@ -56,9 +68,9 @@
                                 placeholder="Company Document*" name="end_date">
                         </div>
                     </div>
-    
+
                 </div>
-    
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
@@ -66,7 +78,7 @@
                         <textarea id="message" placeholder="Companny Information" name="biz_detail" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                     </div>
-    
+
                     <div>
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reason
                             Sale</label>
@@ -74,10 +86,10 @@
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                     </div>
                 </div>
-    
-    
+
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
-    
+
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
                             <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position
@@ -92,7 +104,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-    
+
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
                             <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whish
@@ -107,11 +119,11 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-    
+
                 </div>
-    
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
-    
+
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
                             <label for=" "
@@ -126,7 +138,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-    
+
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
                             <label for=""
@@ -147,11 +159,11 @@
                                 <option value="EU">EUR</option>
                             </select>
                         </div>
-    
+
                     </div>
-    
+
                 </div>
-    
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
@@ -167,8 +179,8 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-    
-    
+
+
                     <div>
                         <div class="w-full">
                             <label
@@ -189,8 +201,8 @@
                         </div>
                     </div>
                 </div>
-    
-    
+
+
         </div>
         </form>
         </div>
