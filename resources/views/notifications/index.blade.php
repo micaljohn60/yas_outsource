@@ -7,8 +7,18 @@
             <h1>No new notification</h1>
         @else
             @foreach ($notifications as $notification)
+
+                @if($notification->type === 'App\Notifications\SendCommentNotification')
+
+                    <div>
+                        <a href="{{route('biz.show', $notification->data["biz_id"])}}">
+                            You have got a comment at Business
+                        </a>
+                    </div>
+                @else
+
                 <div class="w-full flex flex-col sm:flex-row flex-grow overflow-hidden" onclick='fetchProposal({{$notification->data["biz_id"]}},{{$notification->data["id"]}},{{Auth::user()->type->value == "buyer" ? 1 : 2 }},{{$notification->notifiable_id}})'>
-                    <div class="sm:w-1/3 md:1/4 w-full flex-shrink flex-grow-0 pt-4 px-3"> 
+                    <div class="sm:w-1/3 md:1/4 w-full flex-shrink flex-grow-0 pt-4 px-3">
                         <div class="sticky top-0  w-full">
                             <ul class="bg-white h-screen rounded-md flex sm:flex-col overflow-auto content-center lg:w-96 sm:w-screen">
                                 <!-- nav goes here -->
@@ -77,9 +87,9 @@
                         <!-- content area -->
 
                         <div id="form" class="hidden">
-                            <form method="POST" 
-                                action="{{ route('proposal.biz.accept', ['proposal' => $notification->data['id'], 'biz_id' => $notification->data['biz_id']]) }}">                            
-                            
+                            <form method="POST"
+                                action="{{ route('proposal.biz.accept', ['proposal' => $notification->data['id'], 'biz_id' => $notification->data['biz_id']]) }}">
+
                                 @csrf
                                 <input
                                 class="bg-main m-1 p-3 text-white font-bold rounded-md hover:cursor-pointer checked:bg-secondary-400 hover:bg-secondary-200"
@@ -94,39 +104,15 @@
                         <div class="p-3">
                             <h1 id="heading" class="text-2xl text-gray-700 font-bold"></h1>
                             <p id="body" class="mt-2">
-                                
+
                             </p>
                         </div>
 
                     </main>
                 </div>
 
-                
+                @endif
 
-                {{-- <div class="notification">
-                    <div class="body">
-                        <div class="">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <h5 class="mt-3 ms-3">Some sent you a proposal to your biz</h5>
-                                    
-                                    <p class="fs-6 ms-3">Notification Description</p>
-                                </div>
-                                <div class="col-lg-3 d-flex align-items-center justify-content-center">
-
-                                    <p class="fs-6 ms-3 mt-3"><a
-                                            href="{{ route('notification.proposal.show', [
-                                                'proposal' => $notification->data['id'],
-                                                'biz_id' => $notification->data['biz_id'],
-                                            ]) }}"
-                                            class="text-decoration-none">See Detail</a></p>
-                              
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             @endforeach
         @endif
     </div>
@@ -146,14 +132,14 @@
             console.log(data.proposal.description);
             if(userValue == 1){
               document.getElementById("form").remove();
-            }   
+            }
             else{
                 var form = document.getElementById("form");
                 form.classList.remove("hidden");
-                form.className += "flex justify-end visible"; 
-            }    
-            var noti = document.getElementById(notiId);  
-            noti.classList.remove('bg-white');  
+                form.className += "flex justify-end visible";
+            }
+            var noti = document.getElementById(notiId);
+            noti.classList.remove('bg-white');
             noti.className += " bg-gray-300";
             document.getElementById("heading").textContent =  "{{Auth::user()->type->value == 'buyer' ? 'Your Proposel was Accepted ' : 'Someone Sent You a Proposal'}} "
             document.getElementById("body").innerHTML  = data.proposal.description;
