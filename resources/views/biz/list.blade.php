@@ -23,7 +23,7 @@
                                 <p class="font-bold text-lg">{{ $biz->name }}</p>
                                 <p class="text-sm text-gray-700 mt-1 line-clamp-2 w-56">{{ $biz->biz_detail }}</p>
                                 <div class="flex items-center hover:text-blue-600">
-                                    <a class="lowercase text-xs hover:cursor-pointer hover:text-gray-600 mt-2">See detail </a>
+                                    <a target="_blank" href="{{route('biz.show',$biz->id)}}" class="lowercase text-xs hover:cursor-pointer hover:text-gray-600 mt-2">See detail </a>
                                     <i class="fa-solid fa-arrow-up-right-from-square fa-xs px-1 pt-2 hover:text-blue-600"></i>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@
         <div class="bg-white border-gray-300 rounded-lg p-3">
             <form action="{{ route('biz.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="status" value="pending"/>
+                <input type="hidden" name="status" value="pending" />
                 <div class="flex justify-between items-center mb-10 mt-5">
                     <h1 class="text-4xl font-bold text-gray-700">Please complete the following Form to sell</h1>
                     <input
@@ -16,15 +16,6 @@
                         type="submit" value="Submit" />
                 </div>
 
-                @if (count($errors))
-                    <div class="row m-3" role="alert">
-                        <div class="col-md-12">
-                            @foreach ($errors->all() as $error)
-                                <div class="invalid-feedback p-1 m-1">{!! $error !!}</div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
 
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
@@ -33,6 +24,12 @@
                         <input type="text" id=" "
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Company Name*" name="name">
+
+                        @error('name')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div>
                         <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year
@@ -40,6 +37,11 @@
                         <input type="text" id=" "
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Year Establishment*" name="year_est">
+                        @error('year_est')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
@@ -50,22 +52,39 @@
                         <input type="file" id=""
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                             placeholder="Company Document*" name="file_path">
+                        @error('file_path')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish List
+                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish
+                                List
                                 Sale : Start Date</label>
                             <input type="date" id=""
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                                 placeholder="Company Document*" name="start_date">
+                            @error('start_date')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish List
+                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish
+                                List
                                 Sale : End Date</label>
                             <input type="date" id=""
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
                                 placeholder="Company Document*" name="end_date">
+                            @error('end_date')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -77,6 +96,11 @@
                             Information</label>
                         <textarea id="message" placeholder="Companny Information" name="biz_detail" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                        @error('biz_detail')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div>
@@ -84,6 +108,12 @@
                             Sale</label>
                         <textarea id="message" placeholder="Reason Sale" name="reason_sale" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+
+                        @error('reason_sale')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
@@ -92,13 +122,20 @@
 
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position
                                 of Owners</label>
                             <input type="text" id="" placeholder="Position of Owner *" name="position_of_owner"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @error('position_of_owner')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
                                 Shareholders</label>
                             <input type="text" id="" placeholder="Number of Shareholders*" name="share_holder"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -107,16 +144,31 @@
 
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whish
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whish
                                 Sale Price </label>
                             <input type="text" id="" placeholder="Wish Slae Price *" name="wish_sale_price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            @error('wish_sale_price')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actual
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actual
                                 Sale Price</label>
-                            <input type="text" id="" placeholder="Actual Sale Price *" name="actual_sale_price"
+                            <input type="text" id="" placeholder="Actual Sale Price *"
+                                name="actual_sale_price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            @error('actual_sale_price')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -142,7 +194,8 @@
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
                             <label for=""
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred Language</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred
+                                Language</label>
                             <select name="language"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="US">United States</option>
@@ -151,7 +204,8 @@
                         </div>
                         <div>
                             <label for=""
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred Currency</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred
+                                Currency</label>
                             <select id="" name="currency"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-mainblock w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="USD">USD</option>
@@ -167,14 +221,16 @@
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div class="grid gap-6  md:grid-cols-2">
                         <div>
-                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                 Number</label>
                             <input type="text" id="" placeholder="Phone Number *" name="phone"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div>
                             <label for=" "
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Register Number</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Register
+                                Number</label>
                             <input type="text" id="" placeholder="Register Number *" name="register_number"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
@@ -205,7 +261,7 @@
 
         </div>
         </form>
-        </div>
+    </div>
     </div>
 
 
