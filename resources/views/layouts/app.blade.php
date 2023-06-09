@@ -30,11 +30,10 @@
     <div class="flex bg-teal-500 mx-auto">
       <div class="container mx-auto">
         <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-            <div class="flex items-center flex-shrink-0 text-white mr-6">
-              <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-              <a href="/">
-                <span class="font-semibold text-xl tracking-tight">Outsource</span>
-              </a>
+            <div class="grid md:grid-cols-1 md:gap-6 px-10 text-center">
+              <div class="relative z-0 w-full group"> 
+                <input type="text" placeholder="Find your Biz Here" id="" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              </div>
             </div>
             <div class="block lg:hidden">
               <button  onclick="toggle()" class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -80,7 +79,33 @@
               </div>
           </nav>
     </div>
+    
     </div>
+    <form class="mt-2" action="{{ route('biz.index') }}" method="GET">
+      <div class="grid md:grid-cols-4 md:gap-6 px-10 text-center">
+          <div class="relative z-0 w-full mb-3 mt-3 group">
+              <input type="email" id="email"
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Search with Category" required>
+          </div>
+          <div class="relative z-0 w-full mb-3 mt-3 group">
+              <input type="email" id="email"
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Search with Location" required>
+          </div>
+          <div class="relative z-0 w-full mb-3 mt-3 group">
+              <input type="email" id="email"
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Search with Price" required>
+          </div>
+
+          <div class="relative z-0 w-full mb-3 mt-3 group">
+              <button type="button"
+                  class="px-3 w-full py-2 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+
+          </div>
+      </div>
+  </form>
     <main class="">
         @yield('content')
     </main>

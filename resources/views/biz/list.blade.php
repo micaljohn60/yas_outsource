@@ -13,7 +13,7 @@
                     No Biz Found
                 </div>
                 @else
-                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2">
                     @foreach ($bizs as $key=> $biz)
                     <div class="p-2 bg-white border border-gray-200 rounded lg drop-shadow-md ">
                         <div class="flex items-center">
