@@ -29,9 +29,6 @@
 </head>
 
 <body class="bg-gray-100">
-  @if (env('APP_ENV')!='Production')
-Enviroment Test
-@endif
 
     <div class="flex bg-teal-500 mx-auto">
       <div class="container mx-auto">
