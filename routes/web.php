@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/migrate', function(){
+    \Artisan::call('migrate', [
+        '--force' => true
+     ]);
+    dd('migrated!');
+});
 
 Route::get('/', [BizController::class, 'getLatest']);
 Route::get('/admin/login', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('adminlogin');
