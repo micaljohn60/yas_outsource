@@ -13,7 +13,8 @@
     <title>{{ config('app.name', 'Outsource') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src={{env("APP_ENV") != 'production' ? asset('js/app.js'):"https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/js/app.js"  }} defer></script>
     <script src="https://kit.fontawesome.com/0e4c6fcdab.js" crossorigin="anonymous"></script>
     {{-- <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/index_style.css')}}"> --}}
@@ -22,11 +23,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css" rel="stylesheet"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/app.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css" }} rel="stylesheet">
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 
 <body class="bg-gray-100">
+  @if (env('APP_ENV')!='Production')
+Enviroment Test
+@endif
 
     <div class="flex bg-teal-500 mx-auto">
       <div class="container mx-auto">
