@@ -10,10 +10,16 @@
     <script src="https://kit.fontawesome.com/0e4c6fcdab.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/loginstyle.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/credit_card.css') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/style.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/style.css" }} rel="stylesheet">
+
+    {{-- <link rel="stylesheet" href="{{ asset('css/loginstyle.css') }}"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/loginstyle.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/loginstyle.css" }} rel="stylesheet">
+    
+    {{-- <link rel="stylesheet" href="{{ asset('css/credit_card.css') }}"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/credit_card.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/credit_card.css" }} rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/app.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css" }} rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous"></script>
     <!-- Style -->

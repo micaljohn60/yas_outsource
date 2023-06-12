@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('css/side_bar_style.css') }}" rel="stylesheet"> --}}
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href={{env("APP_ENV") != 'production' ? asset('css/app.css')  : "https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css" }} rel="stylesheet">
+
   
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">

@@ -44,17 +44,17 @@
                     <hr class="mb-2">
 
                     <div>
-                        <input type="email" id="email"
+                        <input type="text" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Key Words" required>
+                            placeholder="Key Words" >
                     </div>
 
                     <hr class="mt-2 mb-2">
 
                     <div>
-                        <input type="email" id="email"
+                        <input type="number" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Estlibished After Year YYYY" required>
+                            placeholder="Estlibished After Year YYYY" >
                     </div>
 
                     <hr class="mt-2 mb-2">
@@ -68,7 +68,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <input datepicker type="text"
+                        <input datepicker type="date"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Date Added">
                     </div>
