@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white my-5 w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+    <div class="bg-white my-5 w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 ">
         <main class="bg-white md:w-2/3 lg:w-3/4 px-5">
             <div class="lg:container bg-white">
                 <div class="container  mt-2">
@@ -9,7 +9,8 @@
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center " id="myTab"
                             data-tabs-toggle="#myContent" role="tablist">
                             <li class="mr-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg bg-gray-200 text-xl"
+                                <button
+                                    class="inline-block p-4 border-b-2 rounded-t-lg bg-gray-200 text-xl text-black border-gray-200 "
                                     id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
                                     aria-controls="profile" aria-selected="false">Recent upload from Sellers</button>
                             </li>
@@ -52,6 +53,11 @@
                                     @endforeach
 
                                 </div>
+                                <div class="flex justify-center items-center">
+                                    <a href="{{route('biz.index')}}"
+                                        class="text-main no-underline cursor-pointer hover:text-white border border-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Load More</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +69,8 @@
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center " id="myTab"
                             data-tabs-toggle="#myContent" role="tablist">
                             <li class="mr-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg bg-gray-200 text-xl"
+                                <button
+                                    class="inline-block p-4 border-b-2 rounded-t-lg bg-gray-200 text-xl text-black border-gray-200"
                                     id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
                                     aria-controls="profile" aria-selected="false">Wishlists from Buyers</button>
                             </li>
@@ -103,6 +110,11 @@
                                     @endforeach
 
                                 </div>
+                                <div class="flex justify-center items-center">
+                                    <a href="{{route('biz.index')}}"
+                                        class="text-main no-underline cursor-pointer hover:text-white border border-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Load More</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -113,7 +125,8 @@
 
             <a href="#"
                 class="mt-3 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Hot Discussion from Forum</h5>
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Hot Discussion from Forum
+                </h5>
                 <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
                     <li>
                         At least 10 characters (and up to 100 characters)
@@ -128,12 +141,16 @@
             </a>
 
             <figure class="max-w-lg mt-2">
-                <img class="h-auto max-w-full rounded-lg" src="https://blog.hubspot.com/hs-fs/hubfs/NatureBox-Facebook-Ad.jpg?width=400&name=NatureBox-Facebook-Ad.jpg" alt="image description">
-                
+                <img class="h-auto max-w-full rounded-lg"
+                    src="https://blog.hubspot.com/hs-fs/hubfs/NatureBox-Facebook-Ad.jpg?width=400&name=NatureBox-Facebook-Ad.jpg"
+                    alt="image description">
+
             </figure>
             <figure class="max-w-lg mt-2">
-                <img class="h-auto max-w-full rounded-lg" src="https://blog.hubspot.com/hs-fs/hubfs/NatureBox-Facebook-Ad.jpg?width=400&name=NatureBox-Facebook-Ad.jpg" alt="image description">
-                
+                <img class="h-auto max-w-full rounded-lg"
+                    src="https://blog.hubspot.com/hs-fs/hubfs/NatureBox-Facebook-Ad.jpg?width=400&name=NatureBox-Facebook-Ad.jpg"
+                    alt="image description">
+
             </figure>
 
         </aside>
