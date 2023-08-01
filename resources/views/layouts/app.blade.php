@@ -27,7 +27,7 @@
     <!-- Styles -->
     {{-- <link href="https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css" rel="stylesheet"> --}}
     <link
-        href={{ env('APP_ENV') != 'production' ? asset('css/app.css') : 'https://64872825b9783b3819d4d787--spontaneous-cendol-4f8351.netlify.app/css/app.css' }}
+         href="{{asset('css/app.css')}}" 
         rel="stylesheet">
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>

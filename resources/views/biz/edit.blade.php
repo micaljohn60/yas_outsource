@@ -1,197 +1,273 @@
 @extends('layouts.sidebar')
 
 @section('dashboard_content')
-    <form action="{{ route('biz.update',$biz) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="row">
-            <input type="hidden" value="{{$biz->id}}" name="biz_id">
-            @if (session()->has('message'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session()->get('message') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                    {{-- <div class="alert alert-success">
-                        {{ session()->get('message') }}
-                    </div> --}}
-                @endif
-            <div class="d-flex justify-content-between">
-                <h3>You are now Editing - {{$biz->name}} </h3>
-                <input type="submit" class="btn btn-primary" value="Update">
-            </div>
+    <div class="p-4 sm:ml-64 px-16 py-6 md:col-span-5 lg:col-span-7 bg-gray-100 h-screen">
+        <div class="bg-white border-gray-300 rounded-lg p-3">
+            <form action="{{ route('biz.update',$biz->id) }}" method="post" enctype="multipart/form-data">
+                @method("PUT")
+                @csrf
+                <input type="hidden" name="status" value="pending" />
+                <input type="hidden" name="biz_id" value={{$biz->id}} />
+                <div class="flex justify-between items-center mb-10 mt-5">
+                    <h1 class="text-4xl font-bold text-gray-700">You are updating {{ $biz->name }}</h1>
+                    <input
+                        class="bg-main p-3 text-white font-bold rounded-md hover:cursor-pointer checked:bg-secondary-400 hover:bg-secondary-200"
+                        type="submit" value="Submit" />
+                </div>
 
 
-            <div class="col-lg-6">
-                <input type="hidden" name="status" value="onsale" />
-                <div class="row mt-4">
-                    <div class="col-lg-12">
-                        <h4>Company Information  </h4>
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
+                            Name</label>
+                        <input type="text" id=" "
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Company Name*" name="name" value={{ $biz->name }}>
+
+                        @error('name')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year
+                            Establishemnt</label>
+                        <input type="text" id=" "
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Year Establishment*" name="years_est" value={{ $biz->years_est ?? "2022"}}>
+                        @error('year_est')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
-                <div class="row mt-3 custom-input">
-                    <div class="col-lg-6">
-                         <input type="hidden" name="status" value="onsale" />
-                        {{-- @error('status')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror --}}
-                        <input class="" type="text" placeholder="Company Name*" name="name" value="{{$biz->name}}">
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
+                            Document</label>
+                        <input type="file" id="" value={{ $biz->file_path }}
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                            placeholder="Company Document*" name="file_path">
+                        @error('file_path')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="col-lg-6">
-                        <input class="" type="text" placeholder="Year Establishment*" name="years_est" value="{{$biz->years_est}}">
-                        @error('years_est')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="col-lg-12 mt-3">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                            <input type="file" class="form-control" id="inputGroupFile01" >
+
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish
+                                List
+                                Sale : Start Date</label>
+                            <input type="date" id="" value={{ $biz->start_date }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                                placeholder="Company Document*" name="start_date">
+                            @error('start_date')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for=" " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wish
+                                List
+                                Sale : End Date</label>
+                            <input type="date" id="" value={{ $biz->end_date }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus: block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus: ring-main"
+                                placeholder="Company Document*" name="end_date">
+                            @error('end_date')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
-                    <div class="col-lg-12 mt-3">
-                        <textarea placeholder="Company Information" id="" cols="30" rows="10" name="biz_detail">{{$biz->biz_detail}}</textarea>
+
+                </div>
+
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
+                            Information</label>
+                        <textarea id="message" placeholder="Companny Information" name="biz_detail" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $biz->biz_detail }}</textarea>
                         @error('biz_detail')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Position of Owner*" name="position_of_owner" value="{{$biz->position_of_owner}}">
-                        @error('position_of_owner')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+
+                    <div>
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reason
+                            Sale</label>
+                        <textarea id="message" placeholder="Reason Sale" name="reason_sale" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $biz->reason_sale }}</textarea>
+
+                        @error('reason_sale')
+                            <span class="invalid-feedback text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Phone Number*" name="phone" value="{{$biz->phone}}">
-                        @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                </div>
+
+
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position
+                                of Owners</label>
+                            <input type="text" id="" placeholder="Position of Owner *" name="position_of_owner"
+                                value={{ $biz->position_of_owner }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @error('position_of_owner')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                                Shareholders</label>
+                            <input type="text" id="" placeholder="Number of Shareholders*" name="share_holder"
+                                value={{ $biz->share_holder }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </div>
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Register Number*" name="register_number" value="{{$biz->register_number}}">
-                        @error('register_number')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+
+                    <div class="grid gap-6  md:grid-cols-2">
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whish
+                                Sale Price </label>
+                            <input type="text" id="" placeholder="Wish Slae Price *" name="wish_sale_price"
+                                value={{ $biz->wish_sale_price }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            @error('wish_sale_price')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actual
+                                Sale Price</label>
+                            <input type="text" id="" placeholder="Actual Sale Price *"
+                                name="actual_sale_price"
+                                value={{$biz->actual_sale_price ?? "00000"}}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            @error('actual_sale_price')
+                                <span class="invalid-feedback text-red-500" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Total Number of Shareholders*" name="share_holder" value={{$biz->share_holder}}>
-                        @error('share_holder')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+
+                </div>
+
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                            <input type="text" id="" placeholder="Address *" name="address" value={{$biz->address}}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                            <input type="text" id="" placeholder="Country *" name="country" value={{$biz->country}}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </div>
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Address *" name="address" value="{{$biz->address}}">
-                        @error('address')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="col-lg-6 mt-3">
-                        <input class="" type="text" placeholder="Country *" name="country" value="{{$biz->country}}">
-                        @error('country')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="col-lg-12 mt-3">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                            <select class="form-select" id="inputGroupSelect01" name="language">
-                                <option selected>Preferred language</option>
-                                <option value="en" @if($biz->language=="en")selected @endif>English</option>
-                                <option value="jp" @if($biz->language=="jp")selected @endif>Japanese</option>
+
+                    <div class="grid gap-6  md:grid-cols-2">
+                        <div>
+                            <label for=""
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred
+                                Language</label>
+                            <select name="language"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="US">United States</option>
+                                <option value="JP">Japan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for=""
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preferred
+                                Currency</label>
+                            <select id="" name="currency"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-mainblock w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="USD">USD</option>
+                                <option value="JP">Yen</option>
+                                <option value="EU">EUR</option>
                             </select>
                         </div>
 
                     </div>
 
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row mt-4">
-                    <div class="col-lg-12">
 
-                        <h4>Reason For Sale </h4>
-                    </div>
-                </div>
-                <div class="row mt-3 custom-input">
-
-                    <div class="col-lg-12">
-                        <textarea name="reason_sale" id="" cols="30" rows="10" >{{$biz->reason_sale}}</textarea>
-                        @error('reason_sale')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <h4>Wished Sale Period</h4>
-                    <div class="col-lg-6 mt-3">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Start Date</label>
-                            <input type="date" class="form-control" name="start_date" id="inputGroupFile01" value="{{$biz->start_date}}">
-                            @error('start_date')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div class="grid gap-6  md:grid-cols-2">
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                                Number</label>
+                            <input type="text" id="" placeholder="Phone Number *" name="phone"
+                                value={{ $biz->phone }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
-
-
-                    </div>
-                    <div class="col-lg-6 mt-3">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">End Date</label>
-                            <input type="date" class="form-control" name="end_date" id="inputGroupFile01" value="{{$biz->end_date}}">
-                            @error('end_date')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        <div>
+                            <label for=" "
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Register
+                                Number</label>
+                            <input type="text" id="" placeholder="Register Number *" name="register_number"
+                                value={{ $biz->register_number }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-                    <h4 class="mt-3">Wished Sale Price</h4>
-                    <div class="col-lg-12 mt-3">
-                        <input class="" type="text" name="wish_sale_price" placeholder="Wish Sale Price *" value="{{$biz->wish_sale_price}}">
-                        @error('wish_sale_price')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <h4 class="mt-3">Actual Sale Price</h4>
-                    <div class="col-lg-12 mt-3">
-                        <input class="" type="text" name="actual_sale_price" placeholder="Actual Sale Price*" value="{{$biz->actual_sale_price}}">
-                        @error('actual_sale_price')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+
+
+                    <div>
+                        <div class="w-full">
+                            <label
+                                class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                                <span class="flex items-center space-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    <span class="font-medium text-gray-600">
+                                        Drop files to Attach, or
+                                        <span class="text-blue-600 underline">browse</span>
+                                    </span>
+                                </span>
+                                <input type="file" name="biz_img" class="hidden">
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            </form>
         </div>
-    </form>
+        
+    </div>
+
 
     <script>
         $(function() {
