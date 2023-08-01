@@ -1,4 +1,4 @@
-FROM php:8-fpm
+FROM php:8.2.8-apache
 
 LABEL maintainer="Harry micaljohn60@gmail.com" \
       version="1.0"
