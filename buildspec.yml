@@ -10,7 +10,7 @@ phases:
     - aws --version
     # login to Elastic container registry
     - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
-    - REPOSITORY_URI=public.ecr.aws/v6w2t5g9/biz-deployment
+    - REPOSITORY_URI=177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-private-deployment
     - IMAGE_TAG=1.0
   build:
     commands:
