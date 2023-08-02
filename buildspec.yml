@@ -10,7 +10,7 @@ phases:
     - aws --version
     # login to Elastic container registry
     - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
-    - REPOSITORY_URI=177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-private-deployment
+    - REPOSITORY_URI=177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment
     - IMAGE_TAG=1.0
   build:
     commands:
@@ -21,7 +21,7 @@ phases:
     - cp .env.example .env
     - echo generating app key
     - php artisan key:generate
-    - echo $REPOSITORY_URI
+    - echo $REPOSITORY_URI:$IMAGE_TAG
     - echo Building the Docker image...
     - docker build -t $REPOSITORY_URI:latest .
     - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
