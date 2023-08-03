@@ -8,7 +8,7 @@ pre_build: # commands to be run before build
     - echo Logging in to Amazon ECR....
     - aws --version
     - eval $(aws ecr get-login --region us-east-2 --no-include-email | sed 's|https://||')
-    - REPOSITORY_URI= 177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment
+    - REPOSITORY_URI=177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment
     - IMAGE_TAG=1.0
 build:
   commands:
