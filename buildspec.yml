@@ -31,7 +31,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker image ls -a
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push 177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment:1.0
 # version: 0.2
 
 # phases:
