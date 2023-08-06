@@ -10,7 +10,7 @@ phases:
       - aws --version
       - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
       - REPOSITORY_URI=177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment
-      - IMAGE_TAG=1.0
+      - IMAGE_TAG=2.0
   build:
     commands:
       - echo Build started on `date`
@@ -29,8 +29,6 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Remove Docker image
-      - docker rmi --force $(docker images -q '$REPOSITORY_URI' | uniq)
       - echo Pushing the Docker image...
       - docker image ls -a
       - docker push $REPOSITORY_URI:$IMAGE_TAG
