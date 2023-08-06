@@ -29,9 +29,11 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Remove Docker image
+      - docker rmi --force $(docker images -q '$REPOSITORY_URI' | uniq)
       - echo Pushing the Docker image...
       - docker image ls -a
-      - docker push 177684075522.dkr.ecr.us-east-1.amazonaws.com/biz-two-deployment:1.0
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
 # version: 0.2
 
 # phases:
