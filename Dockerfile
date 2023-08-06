@@ -2,7 +2,7 @@ FROM php:8.2.8-apache
 RUN apt-get update -y && apt-get install -y openssl zip unzip git curl libpng-dev libonig-dev libxml2-dev
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY 000-default.conf /etc/apache2/sites-available/
+ADD 000-default.conf /etc/apache2/sites-available/
 RUN ln -sf /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf 
 RUN a2enmod rewrite
 RUN service apache2 restart
